@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Empire Stone</title>
+  <meta name="description" content="Contactez Empire Stone pour un devis, une demande sur mesure ou une question sur nos produits en quartz et pierre reconstituée." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy-950: #082f57;
+      --navy-900: #0b4278;
+      --navy-800: #0f5a9c;
+      --navy-700: #156fbe;
+      --sky-100: #f6fbff;
+      --sky-150: #eef6ff;
+      --paper: #ffffff;
+      --ink-950: #10213b;
+      --ink-700: #5f7392;
+      --line: rgba(16, 54, 102, 0.13);
+      --shadow-soft: 0 24px 70px rgba(17, 80, 140, 0.13);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: min(1240px, calc(100% - 40px));
+      --font-body: "Instrument Sans", sans-serif;
+      --font-display: "Cormorant Garamond", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink-950);
+      background: radial-gradient(circle at top left, rgba(61, 138, 215, 0.09), transparent 28%),
+                  linear-gradient(180deg, #edf6ff 0%, #f8fbff 18%, #f3f8fe 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button, input, textarea { font: inherit; }
+    .container { width: var(--container); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(236, 245, 255, 0.92);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(14, 72, 130, 0.08);
+    }
+    .nav-shell {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 50px; height: 50px; border-radius: 14px;
+      object-fit: cover; background: var(--paper); border: 1px solid rgba(15, 83, 146, 0.08);
+      box-shadow: 0 12px 28px rgba(21, 96, 172, 0.18);
+    }
+    .brand-copy strong { font-family: var(--font-display); font-size: 1.78rem; line-height: 0.86; letter-spacing: 0.04em; font-weight: 700; color: var(--ink-950); }
+    .brand-copy small { display: block; margin-top: 5px; font-size: 0.68rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--ink-700); }
+    .main-nav { display: flex; align-items: center; gap: 32px; font-weight: 600; letter-spacing: 0.02em; color: var(--ink-950); }
+    .main-nav a { position: relative; }
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -8px; width: 100%; height: 2px;
+      background: var(--navy-700);
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after { transform: scaleX(1); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 26px; border-radius: 14px; border: 1px solid transparent; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--navy-700), var(--navy-900)); color: var(--paper); box-shadow: 0 16px 34px rgba(16, 91, 164, 0.26); }
+    .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-2px); box-shadow: 0 22px 38px rgba(16, 91, 164, 0.3); }
+
+    .page-hero { padding: 100px 0 60px; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.5rem); line-height: 0.96; margin-bottom: 20px; }
+    .page-hero p { max-width: 680px; font-size: 1.05rem; color: var(--ink-700); }
+
+    .section-tag { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--navy-700); }
+    .section-heading { max-width: 780px; margin-bottom: 36px; }
+    .section-heading h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.02; margin-bottom: 16px; }
+    .section-heading p { font-size: 1rem; color: var(--ink-700); }
+
+    .contact-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: start; padding-bottom: 80px; }
+    .contact-copy { padding: 40px 0; }
+    .contact-copy h2 { font-family: var(--font-display); font-size: clamp(2.6rem, 4vw, 3.8rem); line-height: 1; margin: 20px 0 18px; }
+    .contact-copy p { max-width: 540px; font-size: 1.05rem; color: var(--ink-700); }
+    .contact-stack { display: grid; gap: 18px; margin-top: 28px; }
+    .contact-item { background: rgba(255,255,255,0.82); border: 1px solid rgba(15,83,146,0.08); border-radius: 24px; padding: 22px 24px; box-shadow: var(--shadow-soft); }
+    .contact-item small { display: block; margin-bottom: 10px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-700); }
+    .contact-item span,
+    .contact-item a { font-size: 1rem; font-weight: 600; color: var(--ink-950); }
+    .contact-item a { text-decoration: underline; }
+
+    .contact-form { background: rgba(255,255,255,0.86); border: 1px solid rgba(15,83,146,0.08); border-radius: 32px; padding: 34px; box-shadow: var(--shadow-soft); }
+    .form-grid { display: grid; gap: 18px; }
+    .form-field,
+    .form-textarea { width: 100%; border: 1px solid rgba(15,83,146,0.12); border-radius: 18px; padding: 16px 18px; background: #fff; color: var(--ink-950); }
+    .form-field:focus,
+    .form-textarea:focus { outline: none; border-color: var(--navy-700); box-shadow: 0 0 0 4px rgba(21,111,190,0.12); }
+    .form-textarea { min-height: 180px; resize: vertical; }
+    .btn-secondary { display: inline-flex; background: transparent; border-color: rgba(15,83,146,0.18); color: var(--navy-950); }
+
+    .map-container { margin-top: 60px; border-radius: 32px; overflow: hidden; box-shadow: var(--shadow-soft); margin-bottom: 60px; }
+    .map-container iframe { width: 100%; height: 480px; border: none; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 12px; }
+    .service-card { padding: 22px; border-radius: 24px; background: rgba(255,255,255,0.92); border: 1px solid rgba(15,83,146,0.08); box-shadow: var(--shadow-soft); }
+    .service-card strong { display: block; margin-bottom: 12px; font-family: var(--font-display); font-size: 1.15rem; }
+    .service-card p { color: var(--ink-700); line-height: 1.7; }
+
+    .reviews-showcase { margin: 18px 0 58px; }
+    .review-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) repeat(2, minmax(0, 1fr)); gap: 22px; align-items: stretch; }
+    .review-overview {
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(15,83,146,0.1);
+      background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(233,244,255,0.9));
+      box-shadow: var(--shadow-soft);
+    }
+    .review-kicker {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy-700);
+    }
+    .review-score { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px; }
+    .review-score strong {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 5.2rem);
+      line-height: 0.78;
+      letter-spacing: -0.04em;
+      color: var(--ink-950);
+    }
+    .review-score span {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-700);
+      padding-bottom: 10px;
+    }
+    .review-address {
+      max-width: 31ch;
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--ink-700);
+    }
+    .review-tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .review-tags span {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15,90,156,0.08);
+      color: var(--navy-900);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .review-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+    .review-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      min-height: 220px;
+      padding: 28px 26px 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(15,83,146,0.08);
+      background: rgba(255,255,255,0.94);
+      box-shadow: var(--shadow-soft);
+    }
+    .review-card::before {
+      content: "\201C";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      line-height: 1;
+      color: rgba(21,111,190,0.16);
+    }
+    .review-quote {
+      max-width: 34ch;
+      padding-right: 18px;
+      font-size: 1rem;
+      line-height: 1.82;
+      color: var(--ink-950);
+    }
+    .review-meta strong { display: block; font-size: 1rem; letter-spacing: 0.01em; }
+    .review-meta span { display: block; margin-top: 6px; color: var(--ink-700); font-size: 0.92rem; }
+
+    .contact-item.is-address a,
+    .contact-item.is-address span,
+    .contact-item.is-rating a,
+    .contact-item.is-rating span {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      letter-spacing: 0;
+      font-weight: 600;
+    }
+
+    .contact-item.is-address + .contact-item {
+      display: none;
+    }
+
+    footer { padding: 40px 0; background: rgba(13, 45, 86, 0.05); }
+    footer p { color: var(--ink-700); font-size: 0.95rem; text-align: center; }
+
+    @media (max-width: 980px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .review-overview { grid-column: 1 / -1; grid-row: auto; }
+    }
+    @media (max-width: 700px) {
+      .nav-shell { flex-wrap: wrap; }
+      .main-nav { gap: 16px; flex-wrap: wrap; }
+      .page-hero { padding-top: 72px; }
+      .review-grid { grid-template-columns: 1fr; }
+      .review-overview,
+      .review-card { padding: 24px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="Empire Stone">
+        <img class="brand-mark" src="logo.jpeg" alt="Logo Empire Stone" loading="eager" decoding="async" />
+        <span class="brand-copy">
+          <strong>EMPIRE<span>STONE</span></strong>
+          <small>Bringing quality of life</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="marbre-sur-mesure.html">Marbre sur mesure</a>
+        <a href="videos.html">Vidéos</a>
+        <a class="is-current" href="contact.html">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="mailto:contact@empirestone.ma">Écrire</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="section-tag">Contact</span>
+        <h1>Contactez Empire Stone</h1>
+        <p>Pour un devis, une demande sur mesure ou une question sur nos tables, chaises, plans de travail et marbres sur mesure.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=NUMERO%2066%2C%20Rue%203%2C%20Casablanca%2020700%2C%20Maroc&amp;output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="section-heading">
+        <p>Empire Stone conçoit et pose des surfaces en quartz, granit, pierre reconstituée et marbre pour cuisines, salles de bain, salons et projets d'architecture.</p>
+      </div>
+
+      <div class="reviews-showcase">
+        <div class="section-heading">
+          <span class="section-tag">Avis Google Business</span>
+          <h2>Une adresse recommand&eacute;e pour la qualit&eacute; et le respect des engagements.</h2>
+          <p>
+            Entre mobilier sur mesure, tables duo, salles &agrave; manger et cuisines,
+            les retours Google soulignent la qualit&eacute; du rendu, les finitions
+            soign&eacute;es et la fiabilit&eacute; de l'accompagnement.
+          </p>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-overview">
+            <small class="review-kicker">Empire Stone &mdash; Casablanca</small>
+            <div class="review-score">
+              <strong>4,7</strong>
+              <span>/5 selon 47 avis Google</span>
+            </div>
+            <p class="review-address">
+              Num&eacute;ro 66, Rue 3, Casablanca 20700, Maroc
+            </p>
+            <div class="review-tags">
+              <span>Qualit&eacute; du produit</span>
+              <span>Respect des d&eacute;lais</span>
+              <span>Finitions soign&eacute;es</span>
+              <span>Livraison rapide</span>
+              <span>Service &agrave; l'&eacute;coute</span>
+            </div>
+            <a class="review-link" href="https://www.google.com/search?q=empire+stone&amp;oq=empire+s&amp;gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MgYIAhAjGCcyEggDEAAYFBiDARiHAhixAxiABDINCAQQLhivARjHARiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDQwMThqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#lrd=0xda7cd818f35d271:0x5d2d63e512a37ea7,1,,,," target="_blank" rel="noopener">
+              Voir l'adresse sur Google Maps
+            </a>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;Un travail tr&egrave;s professionnel : la table et les chaises
+              &eacute;taient d'excellente qualit&eacute;, les d&eacute;lais parfaitement
+              respect&eacute;s.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Mouhssine Abderma</strong>
+              <span>Table et chaises sur mesure</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;Produit de tr&egrave;s grande qualit&eacute;, au-del&agrave; de mes
+              attentes. Les finitions sont soign&eacute;es et le produit est encore plus
+              beau en vrai.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Doha Fardi</strong>
+              <span>Qualit&eacute; per&ccedil;ue et finitions</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;Un grand merci, je viens de recevoir ma table et elle est
+              magnifique. Qualit&eacute; incroyable et livraison super rapide.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Fatima Ezzahra Bahmad</strong>
+              <span>Livraison et satisfaction produit</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;J'ai command&eacute; un duo tables basses, je suis satisfait du
+              produit et de l'&eacute;coute du staff. Livraison rapide.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Mohamed Amine</strong>
+              <span>Duo tables basses</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;La table re&ccedil;ue est vraiment superbe. L'&eacute;quipe a &eacute;t&eacute;
+              extr&ecirc;mement efficace du d&eacute;but &agrave; la fin.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Lina Zeghli</strong>
+              <span>Exp&eacute;rience client et suivi</span>
+            </div>
+          </article>
+
+          <article class="review-card">
+            <p class="review-quote">
+              &ldquo;Tr&egrave;s satisfaite de ma salle &agrave; manger. C'est du tr&egrave;s
+              beau travail, exactement ce &agrave; quoi je m'attendais.&rdquo;
+            </p>
+            <div class="review-meta">
+              <strong>Nour Jennane</strong>
+              <span>Salle &agrave; manger sur mesure</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="contact-layout">
+        <div class="contact-copy">
+          <span class="section-tag">Notre expertise</span>
+          <h2>Un accompagnement complet pour votre projet.</h2>
+          <p>Nous réalisons des meubles et surfaces haut de gamme : tables de repas, tables basses, chaises, plans de travail en quartz, et marbre sur mesure pour villas, appartements et commerces.</p>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <strong>Sur mesure</strong>
+              <p>Conception et fabrication personnalisées selon dimensions, matériaux et style de votre projet.</p>
+            </div>
+            <div class="service-card">
+              <strong>Installation</strong>
+              <p>Pose professionnelle par nos équipes à Casablanca et dans toute la région.</p>
+            </div>
+            <div class="service-card">
+              <strong>Qualité</strong>
+              <p>Matériaux résistants, finitions élégantes et recherche d'un rendu raffiné pour chaque réalisation.</p>
+            </div>
+            <div class="service-card">
+              <strong>Devis rapide</strong>
+              <p>Envoyez-nous votre demande et recevez une réponse claire pour votre budget et les délais.</p>
+            </div>
+          </div>
+
+          <div class="contact-stack">
+            <div class="contact-item">
+              <small>Téléphone fixe</small>
+              <span>05 22 70 09 52</span>
+            </div>
+            <div class="contact-item">
+              <small>Mobile</small>
+              <span>+212 679 191 230</span>
+            </div>
+            <div class="contact-item is-rating">
+              <small>Avis Google Business</small>
+              <span>4,7/5 &mdash; 47 avis clients</span>
+            </div>
+            <div class="contact-item">
+              <small>Instagram</small>
+              <a href="https://www.instagram.com/empirestone_morocco" target="_blank" rel="noopener">@empirestone_morocco</a>
+            </div>
+            <div class="contact-item is-address">
+              <small>Adresse exacte</small>
+              <a href="https://www.google.com/search?q=empire+stone&amp;oq=empire+s&amp;gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MgYIAhAjGCcyEggDEAAYFBiDARiHAhixAxiABDINCAQQLhivARjHARiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDQwMThqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#lrd=0xda7cd818f35d271:0x5d2d63e512a37ea7,1,,,," target="_blank" rel="noopener">Num&eacute;ro 66, Rue 3, Casablanca 20700, Maroc</a>
+            </div>
+            <div class="contact-item">
+              <small>Showroom</small>
+              <a href="https://www.google.com/maps/place/Casablanca/@33.5722875,-7.5869925,12z/data=!3m1!4b1!4m6!3m5!1s0xda7cd4778aa113b:0xb06c1d84f310fd3!8m2!3d33.5731104!4d-7.5898434!16zL20vMDIyYl8?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Casablanca, Maroc — Voir sur Google Maps</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" action="#" method="post">
+          <div class="form-grid">
+            <input class="form-field" type="text" name="nom" placeholder="Votre nom" required />
+            <input class="form-field" type="email" name="email" placeholder="Votre email" required />
+            <input class="form-field" type="text" name="objet" placeholder="Objet de la demande" />
+            <textarea class="form-textarea" name="message" placeholder="Votre message"></textarea>
+            <button class="btn btn-primary" type="submit">Envoyer ma demande</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>Empire Stone — Quartz, granit, marbre et mobilier sur mesure. Livraison et pose en région Casablanca.</p>
+    </div>
+  </footer>
+  <script src="cart.js"></script>
+</body>
+</html>

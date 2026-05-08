@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produit | Empire Stone</title>
+  <meta name="description" content="Fiche produit Empire Stone avec galerie, description, mesures sur commande et finitions disponibles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --navy-950: #082f57;
+      --navy-900: #0b4278;
+      --navy-700: #156fbe;
+      --sky-100: #f6fbff;
+      --paper: #ffffff;
+      --ink-950: #10213b;
+      --ink-700: #5f7392;
+      --line: rgba(16, 54, 102, 0.13);
+      --shadow-soft: 0 24px 70px rgba(17, 80, 140, 0.13);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: min(1240px, calc(100% - 40px));
+      --font-body: "Instrument Sans", sans-serif;
+      --font-ui: "Instrument Sans", sans-serif;
+      --font-display: "Cormorant Garamond", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--ink-950);
+      background:
+        radial-gradient(circle at top left, rgba(61, 138, 215, 0.09), transparent 28%),
+        linear-gradient(180deg, #edf6ff 0%, #f8fbff 18%, #f3f8fe 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+    button { font: inherit; }
+
+    .container { width: var(--container); margin-inline: auto; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(16, 54, 102, 0.08);
+    }
+
+    .nav-shell {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand { display: inline-flex; align-items: center; gap: 12px; }
+    .brand-copy { display: flex; flex-direction: column; }
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: var(--paper);
+      border: 1px solid rgba(15, 83, 146, 0.08);
+    }
+
+    .brand-copy strong {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+
+    .brand-copy strong span {
+      color: var(--navy-700);
+    }
+
+    .brand-copy small {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink-700);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
+      color: var(--paper);
+      box-shadow: 0 16px 34px rgba(16, 91, 164, 0.22);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--navy-900);
+      border-color: rgba(16, 54, 102, 0.1);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .page-shell {
+      padding: 56px 0 90px;
+    }
+
+    .breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(21, 111, 190, 0.1);
+      color: var(--navy-900);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, 0.9fr);
+      gap: 34px;
+      align-items: start;
+    }
+
+    .gallery-panel,
+    .info-panel,
+    .detail-panel,
+    .finish-panel {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(16, 54, 102, 0.08);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery-panel { padding: 20px; }
+    .info-panel { padding: 32px; }
+    .detail-panel,
+    .finish-panel { padding: 32px; margin-top: 28px; }
+
+    .main-visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #dbe9f8;
+      min-height: 520px;
+    }
+
+    .main-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .visual-count {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: rgba(10, 39, 74, 0.72);
+      color: var(--paper);
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(8px);
+    }
+
+    .thumb-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .thumb-button {
+      border: 1px solid rgba(16, 54, 102, 0.08);
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .thumb-button:hover,
+    .thumb-button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(21, 111, 190, 0.24);
+      box-shadow: 0 16px 30px rgba(16, 91, 164, 0.12);
+    }
+
+    .thumb-button.is-active {
+      border-color: rgba(21, 111, 190, 0.35);
+      box-shadow: 0 16px 30px rgba(16, 91, 164, 0.14);
+    }
+
+    .thumb-button img {
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .thumb-caption {
+      display: block;
+      padding: 10px 12px 12px;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-700);
+      text-align: left;
+    }
+
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 36px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: rgba(21, 111, 190, 0.1);
+      color: var(--navy-900);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--font-display);
+      line-height: 0.94;
+      letter-spacing: -0.03em;
+      font-weight: 700;
+      color: var(--ink-950);
+      text-wrap: balance;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3vw, 3.4rem);
+      margin-bottom: 18px;
+    }
+
+    .lead {
+      color: var(--ink-700);
+      font-size: 1.02rem;
+      max-width: 56ch;
+    }
+
+    .pricing-card {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(241, 248, 245, 0.96), rgba(255, 255, 255, 0.96));
+      border: 1px solid rgba(47, 138, 103, 0.16);
+      box-shadow: 0 18px 34px rgba(29, 106, 78, 0.08);
+    }
+
+    .pricing-card small {
+      display: block;
+      color: #1d6a4e;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .pricing-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.2rem;
+      color: var(--ink-950);
+    }
+
+    .pricing-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pricing-line {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(16, 54, 102, 0.08);
+    }
+
+    .pricing-line span:first-child {
+      color: var(--ink-700);
+      font-size: 0.94rem;
+    }
+
+    .pricing-line span:last-child {
+      color: var(--ink-950);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .meta-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(21, 111, 190, 0.06);
+      border: 1px solid rgba(16, 54, 102, 0.08);
+    }
+
+    .meta-card small {
+      display: block;
+      margin-bottom: 6px;
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-700);
+    }
+
+    .meta-card strong {
+      display: block;
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--ink-950);
+    }
+
+    .order-form {
+      display: grid;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .form-section {
+      display: grid;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: riseIn 520ms ease forwards;
+    }
+
+    .form-section:nth-child(2) { animation-delay: 60ms; }
+    .form-section:nth-child(3) { animation-delay: 120ms; }
+    .form-section:nth-child(4) { animation-delay: 180ms; }
+
+    .form-section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .form-section-title strong {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-700);
+    }
+
+    .form-hint {
+      color: var(--ink-700);
+      font-size: 0.94rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .form-field,
+    .form-textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(16, 54, 102, 0.12);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink-950);
+      padding: 16px 18px;
+      outline: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .form-field::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(16, 33, 70, 0.44);
+    }
+
+    .form-field:focus,
+    .form-textarea:focus {
+      border-color: rgba(21, 111, 190, 0.34);
+      box-shadow: 0 0 0 4px rgba(21, 111, 190, 0.1);
+      background: var(--paper);
+    }
+
+    .form-field.is-readonly {
+      background: rgba(21, 111, 190, 0.06);
+      font-weight: 600;
+    }
+
+    .form-textarea {
+      min-height: 130px;
+      resize: vertical;
+      grid-column: 1 / -1;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .color-option {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+      animation: riseIn 540ms ease forwards;
+      animation-delay: calc(var(--stagger, 0) * 55ms);
+    }
+
+    .color-option input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .finish-card {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(16, 54, 102, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .color-option:hover .finish-card,
+    .color-option input:focus-visible + .finish-card {
+      transform: translateY(-4px);
+      border-color: rgba(21, 111, 190, 0.22);
+      box-shadow: 0 20px 40px rgba(16, 91, 164, 0.12);
+    }
+
+    .color-option input:checked + .finish-card {
+      border-color: rgba(21, 111, 190, 0.35);
+      box-shadow: 0 20px 44px rgba(16, 91, 164, 0.16);
+    }
+
+    .color-option input:checked + .finish-card .finish-copy span {
+      background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
+      color: var(--paper);
+    }
+
+    .finish-media {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #d8e6f5, #eef5fb);
+    }
+
+    .finish-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .finish-placeholder {
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.45), transparent 38%),
+        linear-gradient(135deg, #8f9197, #c9ccd2 55%, #747882);
+    }
+
+    .finish-card[data-family="travertin"] .finish-placeholder {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.45), transparent 38%),
+        linear-gradient(135deg, #e7dbc6, #d5c3a2 55%, #efe5d2);
+    }
+
+    .finish-card[data-family="vert"] .finish-placeholder {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.3), transparent 38%),
+        linear-gradient(135deg, #355c4a, #3f8d69 55%, #89b59e);
+    }
+
+    .finish-card[data-family="noir"] .finish-placeholder {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 38%),
+        linear-gradient(135deg, #23252a, #46484f 58%, #121318);
+    }
+
+    .finish-card[data-family="marron"] .finish-placeholder {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.2), transparent 38%),
+        linear-gradient(135deg, #4f372c, #826151 55%, #c39a7f);
+    }
+
+    .finish-card[data-family="blanc"] .finish-placeholder,
+    .finish-card[data-family="beige"] .finish-placeholder {
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.48), transparent 38%),
+        linear-gradient(135deg, #f2efe8, #ddd3c3 55%, #faf7f0);
+    }
+
+    .finish-copy {
+      padding: 18px;
+    }
+
+    .finish-copy h3 {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      line-height: 1.25;
+      color: var(--ink-950);
+    }
+
+    .finish-copy span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin-top: 12px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(21, 111, 190, 0.1);
+      color: var(--navy-900);
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: var(--paper);
+      box-shadow: 0 16px 34px rgba(18, 140, 126, 0.24);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(18, 140, 126, 0.28);
+    }
+
+    .selection-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(21, 111, 190, 0.08);
+      border: 1px solid rgba(21, 111, 190, 0.14);
+      color: var(--ink-950);
+      font-size: 0.92rem;
+    }
+
+    .selection-note strong {
+      font-family: var(--font-ui);
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .form-summary {
+      display: none;
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      background: rgba(21, 111, 190, 0.08);
+      border: 1px solid rgba(21, 111, 190, 0.16);
+      color: var(--ink-950);
+      font-size: 0.95rem;
+      white-space: pre-line;
+    }
+
+    .form-summary.is-visible {
+      display: block;
+    }
+
+    .contact-shortcuts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(21, 111, 190, 0.1);
+      color: var(--navy-900);
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    @keyframes riseIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .empty-state {
+      max-width: 720px;
+      margin: 70px auto 0;
+      padding: 38px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(16, 54, 102, 0.08);
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+    }
+
+    .empty-state p {
+      color: var(--ink-700);
+      margin: 18px 0 26px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .color-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-shell {
+        flex-wrap: wrap;
+      }
+
+      .main-nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .page-shell {
+        padding: 36px 0 70px;
+      }
+
+      .thumb-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .form-grid,
+      .color-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-visual {
+        min-height: 360px;
+      }
+
+      .gallery-panel,
+      .info-panel,
+      .detail-panel,
+      .finish-panel {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .form-section,
+      .color-option {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="Empire Stone">
+        <img class="brand-mark" src="logo.jpeg" alt="Logo Empire Stone" loading="eager" decoding="async" />
+        <span class="brand-copy">
+          <strong>EMPIRE<span>STONE</span></strong>
+          <small>Bringing quality of life</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="marbre-sur-mesure.html">Marbre sur mesure</a>
+        <a href="videos.html">Vidéos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="contact.html">Demander un devis</a>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="container" id="product-page"></div>
+  </main>
+
+  <script>
+    const fallbackImage = 'logo.jpeg';
+    const catalogStorageKey = 'empireStoneCatalogV4';
+    const supplementalMediaFolder = 'marbre/nouveau photos pour meme produit';
+    const ceramicFolderFiles = [
+      'aurora crystal.png',
+      'BELLISSIMA BEIGE.png',
+      'BELLISSIMA GRIGIO.png',
+      'BLACK ZIMBABWE.png',
+      'BOURGOGNE PERLE.png',
+      'breccia onciata.png',
+      'CALACATTA BLACK.png',
+      'CALACATTA CLASSIC.png',
+      'CALACATTA GOLD.png',
+      'CALATORAO.png',
+      'COPPER.png',
+      'DEEP BLACK.png',
+      'ESSENZA.png',
+      'ESTATUARIO.png',
+      'ETERNAL WHITE.png',
+      'FIOR DI BOSCO.png',
+      'IGNEOUS STONE.png',
+      'LAURENT.png',
+      'marquina.png',
+      'montblanc.png',
+      'MYSTIQUE GREY.png',
+      'patagonia.png',
+      'PIETRA GREY.png',
+      'PURE PORTLAND.png',
+      'STUDIO CREAM.png',
+      'STUDIO DARK.png',
+      'STUDIO GREY.png',
+      'TERRE DI BOLGHERI.png',
+      'TRAVERTINE VEIN.png',
+      'URBAN BLACK.png',
+      'URBAN GREY.png'
+    ];
+    const ceramicFinishLibrary = buildCeramicFinishLibrary(ceramicFolderFiles);
+
+    const defaultFinishes = [
+      {id: 'noir-khenifra', label: 'Marbre Noir de Khenifra', family: 'noir', image: 'marbre/noir%20royal.png'},
+      {id: 'blanc-ibiza', label: 'Marbre Blanc Ibiza', family: 'blanc', image: 'marbre/blanc%20ibiza.png'},
+      {id: 'crema-marfil', label: 'Marbre Crema Marfil', family: 'beige', image: 'marbre/Crema%20Marfil.png'},
+      {id: 'vert-guatemala', label: 'Marbre Vert Guatemala', family: 'vert', image: 'marbre/vert%20guatemala.png'},
+      {id: 'noir-saint-laurent', label: 'Marbre Noir Saint-Laurent', family: 'noir', image: 'marbre/noir%20saint%20laurent.png'},
+      {id: 'marron-imperial', label: 'Marbre Marron Imperial', family: 'marron', image: 'marbre/Marron%20Emperador.png'},
+      {id: 'gris-tiflet', label: 'Marbre Gris Tiflet', family: 'gris', image: ''},
+      {id: 'travertin', label: 'Travertin', family: 'travertin', image: 'marbre/Taza%20Beige%202cm%20POLI.png'},
+      ...ceramicFinishLibrary.map(({id, label, family, image}) => ({id, label, family, image}))
+    ];
+
+    const officialTableBasseNames = [
+      'Casa naturel table basse marbre',
+      'Cube tika marbre',
+      'Duo casa naturel tables basses marbre',
+      'Duo taza naturel tables basses marbre',
+      'Table basse astra',
+      'Table basse celya bois',
+      'Table basse esmee',
+      'Table basse honore travertin bois',
+      'Table basse horus travertin',
+      'Table basse sahel',
+      'Table basse sahel chene',
+      'Table basse sahel marbre noir',
+      'Table basse travertin horus carre',
+      'Table basse wallen travertin bois',
+      'Table basse yara',
+      'Table basse zana travertin',
+      'Tables basses duo celya bois',
+      'Tables basses duo dana',
+      'Tables basses duo wallen',
+      'Tables basses suma beige',
+      'Tables basses travertin luna',
+      'Tables basses trio celya bois',
+      'Taza naturel table basse marbre',
+      'Trio casa naturel tables basses marbre',
+      'Trio gris thundra',
+      'Trio tables basses en travertin nouma',
+      'Trio taza naturel tables basses marbre'
+    ];
+
+    const officialTableBasseProducts = officialTableBasseNames
+      .map(title => ({
+        title,
+        words: normalizeCatalogSignature(title).split(/\s+/).filter(Boolean),
+        keyWords: getSignificantCatalogWords(title)
+      }))
+      .sort((left, right) => right.words.length - left.words.length);
+
+    function buildCeramicFinishLibrary(files) {
+      return files.map((fileName, index) => {
+        const label = formatCeramicLabel(fileName);
+        const keywords = normalizeCatalogText(label).split(/\s+/).filter(Boolean);
+        return {
+          id: `ceramique-${slugifyCeramicLabel(label)}-${index + 1}`,
+          label,
+          family: 'ceramique',
+          image: encodeURI(`ceramiques/${fileName}`),
+          keywords
+        };
+      });
+    }
+
+    function formatCeramicLabel(fileName) {
+      return fileName
+        .replace(/\.[^.]+$/, '')
+        .replace(/[_-]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .split(' ')
+        .filter(Boolean)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+    }
+
+    function slugifyCeramicLabel(label) {
+      return normalizeCatalogText(label).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+
+    function normalizeCatalogText(text) {
+      return (text || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+
+    function normalizeCatalogSignature(text) {
+      return normalizeCatalogText(text)
+        .replace(/[^a-z0-9]+/g, ' ')
+        .replace(/\bnatuel\b/g, 'naturel')
+        .trim();
+    }
+
+    function getCatalogWordSet(source) {
+      return new Set(normalizeCatalogSignature(source).split(/\s+/).filter(Boolean));
+    }
+
+    function getSignificantCatalogWords(source) {
+      const ignoredWords = new Set(['table', 'tables', 'basse', 'basses', 'marbre', 'mobilier', 'modele']);
+      return normalizeCatalogSignature(source)
+        .split(/\s+/)
+        .filter(word => word && !ignoredWords.has(word));
+    }
+
+    function isSupplementalCatalogPhoto(src) {
+      const decoded = decodeURIComponent(src || '').toLowerCase().replace(/\\/g, '/');
+      return decoded.includes(`${supplementalMediaFolder.toLowerCase()}/`);
+    }
+
+    function normalizeCatalogPhotos(productData, category) {
+      if (!Array.isArray(productData.photos) || !productData.photos.length) return [];
+
+      const hasSupplementalMedia = (category === 'tables-basses' || category === 'tables-appoint')
+        && productData.photos.some(photo => isSupplementalCatalogPhoto(photo.src));
+      const sourcePhotos = hasSupplementalMedia
+        ? productData.photos.filter(photo => isSupplementalCatalogPhoto(photo.src))
+        : productData.photos;
+      const seen = new Set();
+
+      return sourcePhotos.filter(photo => {
+        const key = decodeURIComponent(photo.src || '').toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function findOfficialCatalogTableBasseName(productData) {
+      const source = [
+        productData.slug,
+        productData.title,
+        productData.coverAlt,
+        productData.cover,
+        ...(productData.photos || []).flatMap(photo => [photo.src, photo.alt])
+      ].join(' ');
+      const words = getCatalogWordSet(source);
+      return officialTableBasseProducts.find(item => {
+        const fullMatch = item.words.every(word => words.has(word));
+        const keyMatch = item.keyWords.length > 0 && item.keyWords.every(word => words.has(word));
+        return fullMatch || keyMatch;
+      })?.title || '';
+    }
+
+    function isNamedCatalogTableBasseProduct(productData) {
+      const source = [
+        productData.title,
+        productData.coverAlt,
+        ...(productData.photos || []).map(photo => photo.alt)
+      ].join(' ');
+      return /\btables?\s+basses?\b/.test(normalizeCatalogSignature(source));
+    }
+
+    function getCatalogCategoryMeta(category) {
+      if (category === 'tables-basses') {
+        return {
+          label: 'Tables basses',
+          categoryLabel: 'Tables basses'
+        };
+      }
+
+      if (category === 'tables-appoint') {
+        return {
+          label: 'Tables d&#x27;appoint',
+          categoryLabel: 'Tables d&#x27;appoint'
+        };
+      }
+
+      return null;
+    }
+
+    function setCatalogProductCategory(productData, category) {
+      const meta = getCatalogCategoryMeta(category);
+      return {
+        ...productData,
+        category,
+        label: meta?.label || productData.label,
+        categoryLabel: meta?.categoryLabel || productData.categoryLabel
+      };
+    }
+
+    function organizeCatalogProduct(productData, isHardstoneCeramic) {
+      if (isHardstoneCeramic || productData.category === 'chaises' || productData.category === 'tables-repas') {
+        return productData;
+      }
+
+      const officialTableBasseName = findOfficialCatalogTableBasseName(productData);
+      if (officialTableBasseName) {
+        return setCatalogProductCategory({...productData, title: officialTableBasseName}, 'tables-basses');
+      }
+
+      if (isNamedCatalogTableBasseProduct(productData)) {
+        return setCatalogProductCategory(productData, 'tables-basses');
+      }
+
+      return setCatalogProductCategory(productData, 'tables-appoint');
+    }
+
+    function matchCeramicFinish(source) {
+      return ceramicFinishLibrary.find(item => item.keywords.every(keyword => source.includes(keyword))) || null;
+    }
+
+    function inferCatalogFinishId(productData) {
+      const source = normalizeCatalogText(`${productData.title || ''} ${productData.colorLabel || ''}`);
+
+      if (source.includes('khenifra')) return 'noir-khenifra';
+      if (source.includes('ibiza') || productData.color === 'blanc') return 'blanc-ibiza';
+      if (source.includes('crema') || source.includes('marfil') || source.includes('beige')) return 'crema-marfil';
+      if (source.includes('guatemala') || productData.color === 'vert') return 'vert-guatemala';
+      if (source.includes('saint laurent')) return 'noir-saint-laurent';
+      if (source.includes('imperial') || productData.color === 'marron') return 'marron-imperial';
+      if (source.includes('tiflet') || productData.color === 'gris') return 'gris-tiflet';
+      if (source.includes('travertin') || productData.color === 'travertin') return 'travertin';
+
+      const ceramicMatch = matchCeramicFinish(source);
+      if (ceramicMatch) return ceramicMatch.id;
+      if (source.includes('ceramique') || productData.color === 'ceramique') return ceramicFinishLibrary[0]?.id || '';
+
+      return '';
+    }
+
+    function mergeCatalogFinishes(savedFinishes) {
+      const merged = new Map();
+
+      (Array.isArray(savedFinishes) ? savedFinishes : []).forEach(finish => {
+        if (!finish || finish.id === 'ceramique') return;
+        if (/^ceramique-(bella|elsa|celia|fedora|gaia|happy|ivota|elisabeth|victoria|voltera|tiber|the-hadrian|palatine|etrusca|domus|aurelian)/.test(finish.id)) return;
+        if (/ceramique%20hard%20stone|nouveau%20photos%20pour%20meme%20produit/i.test(String(finish.image || ''))) return;
+        merged.set(finish.id, finish);
+      });
+
+      [...defaultFinishes].forEach(finish => {
+        merged.set(finish.id, finish);
+      });
+
+      return Array.from(merged.values());
+    }
+
+    function sanitizeCatalogProduct(productData) {
+      const description = String(productData.description || '').trim();
+      const cleanChairDescription = `${productData.title} est une chaise elegante concue pour s'accorder avec nos salles a manger en marbre et nos projets sur commande.`;
+      const isHardstoneCeramic = productData.category === 'hardstone-ceramiques' || productData.category === 'tables-ceramiques';
+      const organizedProduct = organizeCatalogProduct(productData, isHardstoneCeramic);
+      const category = isHardstoneCeramic ? 'hardstone-ceramiques' : organizedProduct.category;
+      const photos = normalizeCatalogPhotos(organizedProduct, category);
+
+      return {
+        ...organizedProduct,
+        category,
+        label: isHardstoneCeramic ? 'Hardstone ceramiques' : organizedProduct.label,
+        categoryLabel: isHardstoneCeramic ? 'Hardstone ceramiques' : organizedProduct.categoryLabel,
+        photos: photos.length ? photos : organizedProduct.photos,
+        cover: photos[0]?.src || organizedProduct.cover,
+        coverAlt: photos[0]?.alt || organizedProduct.coverAlt,
+        photoCount: photos.length || organizedProduct.photoCount,
+        finishId: inferCatalogFinishId(organizedProduct),
+        pricing: isHardstoneCeramic
+          ? {badge: 'A partir de 14500 dh', value: 14500}
+          : organizedProduct.pricing,
+        priceBadge: isHardstoneCeramic ? 'A partir de 14500 dh' : organizedProduct.priceBadge,
+        measurements: isHardstoneCeramic
+          ? [
+              '6 personnes : 14500 dh',
+              '8 personnes : 16000 dh',
+              '10 personnes : 20000 dh',
+              '12 personnes : 23000 dh',
+              '14 personnes : 26000 dh',
+              'Dimensions : sur mesure selon le client',
+              'Hauteur : 75 cm (base)'
+            ]
+          : category === 'tables-basses'
+          ? [
+              'Hauteur : 45 cm (standard)',
+              'Rendement : 110 cm (standard)',
+              'Dimensions : sur mesure selon le client',
+              'Finition : sur commande'
+            ]
+          : organizedProduct.measurements,
+        description: category === 'chaises' && /\bdh\b/i.test(description)
+          ? cleanChairDescription
+          : description
+      };
+    }
+
+    function resolveActiveFinishId(productData, finishes) {
+      const currentId = inferCatalogFinishId(productData) || productData.finishId || '';
+      if (finishes.some(finish => finish.id === currentId)) return currentId;
+      return finishes[0]?.id || '';
+    }
+
+    function isExcludedCatalogProduct(productData) {
+      const source = normalizeCatalogText(`${productData.slug || ''} ${productData.title || ''} ${productData.coverAlt || ''} ${productData.cover || ''}`)
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+
+      return [
+        ['duo', 'nalma', 'noir', 'khenifra'],
+        ['duo', 'nalma', 'travertin', 'verre'],
+        ['table', 'basse', 'thana', 'travertin'],
+        ['table', 'basse', 'thara', 'noir'],
+        ['table', 'basse', 'thara', 'travertin'],
+        ['table', 'vista', 'noir', 'saint', 'laurent', 'dore'],
+        ['table', 'vista', 'vert', 'guatemala'],
+        ['calypso'],
+        ['sofia', 'table', 'marbre', 'noir', 'khenifra'],
+        ['table', 'de', 'repas', 'massa'],
+        ['table', 'massa', 'chene', 'noir'],
+        ['table', 'de', 'repas', 'travertin', 'lana'],
+        ['travertin', 'lana', 'mobilier'],
+        ['romy'],
+        ['alma'],
+        ['table', 'basse', 'eclipse', 'marbre', 'blanc'],
+        ['mosta'],
+        ['table', 'basse', 'eden', 'crema'],
+        ['table', 'basse', 'galet', 'mobilier'],
+        ['table', 'basse', 'kaya', 'beton', 'cire'],
+        ['table', 'basse', 'yara', 'noir'],
+        ['table', 'sanae', 'noir', 'saint', 'laurent'],
+        ['table', 'tangia', 'travertin', 'metal'],
+        ['tables', 'basses', 'ora'],
+        ['table', 'basse', 'ora'],
+        ['naelle'],
+        ['travertin', 'metal'],
+        ['flora', 'beige']
+      ].some(pattern => pattern.every(word => source.includes(word)));
+    }
+
+    const page = document.getElementById('product-page');
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('slug');
+    const catalog = readCatalog();
+    const product = catalog.products.find(item => item.slug === slug);
+
+    if (!slug || !product) {
+      renderMissingState();
+    } else {
+      renderProductPage(product, catalog.finishes);
+    }
+
+    function readCatalog() {
+      try {
+        const saved = JSON.parse(window.localStorage.getItem(catalogStorageKey) || '{}');
+        return {
+          products: Array.isArray(saved.products)
+            ? saved.products
+              .filter(item => !isExcludedCatalogProduct(item))
+              .map(sanitizeCatalogProduct)
+            : [],
+          finishes: mergeCatalogFinishes(saved.finishes)
+        };
+      } catch (error) {
+        return {
+          products: [],
+          finishes: defaultFinishes
+        };
+      }
+    }
+
+    function renderMissingState() {
+      page.innerHTML = `
+        <section class="empty-state">
+          <h1>Produit introuvable</h1>
+          <p>Ouvrez d'abord la page catalogue, puis cliquez sur un produit pour charger sa fiche detail.</p>
+          <a class="btn btn-primary" href="products.html">Retour au catalogue</a>
+        </section>
+      `;
+    }
+
+    function handleImageError(event) {
+      const image = event.currentTarget;
+      image.removeEventListener('error', handleImageError);
+      image.src = fallbackImage;
+    }
+
+    function getSafeImageSrc(src) {
+      const value = String(src || '').trim();
+      return value && !value.includes('${') ? value : fallbackImage;
+    }
+
+    function renderProductPage(productData, finishes) {
+      const activeFinishId = resolveActiveFinishId(productData, finishes);
+      const activeFinish = finishes.find(finish => finish.id === activeFinishId) || null;
+      const finishCards = finishes.map((finish, index) => renderColorOption(finish, activeFinishId, index)).join('');
+      const coverSrc = getSafeImageSrc(productData.cover);
+      const thumbnails = productData.photos.map((photo, index) => `
+        <button class="thumb-button${index === 0 ? ' is-active' : ''}" type="button" data-thumb-index="${index}">
+          <img src="${getSafeImageSrc(photo.src)}" alt="${photo.alt}" loading="lazy" />
+          <span class="thumb-caption">Vue ${index + 1}</span>
+        </button>
+      `).join('');
+      const measurementFields = createMeasurementFields(productData);
+      const measurementCards = renderMeasurementCards(productData);
+      const measurementHint = buildMeasurementHint(productData);
+      page.innerHTML = `
+        <div class="breadcrumb">Produit Empire Stone</div>
+
+        <section class="hero-grid">
+          <div class="gallery-panel">
+            <div class="main-visual">
+              <img id="main-product-image" src="${coverSrc}" alt="${productData.coverAlt || productData.title}" />
+              <span class="visual-count">${productData.photoCount} photo${productData.photoCount > 1 ? 's' : ''}</span>
+            </div>
+            <div class="thumb-grid">${thumbnails}</div>
+          </div>
+
+          <div class="info-panel">
+            <span class="product-tag">${productData.categoryLabel}</span>
+            <h1>${productData.title}</h1>
+            <p class="lead">${productData.description || 'Choisissez la couleur souhaitee, indiquez vos dimensions sur commande et envoyez votre demande pour ce produit.'}</p>
+
+            <div class="meta-grid">
+              <div class="meta-card">
+                <small>Produit</small>
+                <strong>${productData.title}</strong>
+              </div>
+              ${measurementCards}
+              <div class="meta-card">
+                <small>Couleur choisie</small>
+                <strong id="selected-finish-label">${activeFinish?.label || productData.colorLabel}</strong>
+              </div>
+              <div class="meta-card">
+                <small>Galerie</small>
+                <strong>${productData.photoCount} vue${productData.photoCount > 1 ? 's' : ''}</strong>
+              </div>
+            </div>
+
+            <form class="order-form" id="product-order-form">
+              <div class="form-section">
+                <div class="form-section-title">
+                  <strong>Formulaire produit</strong>
+                  <span class="form-hint">Chaque demande est traitee sur commande.</span>
+                </div>
+                <div class="form-grid">
+                  <input class="form-field is-readonly" type="text" name="product_name" value="${productData.title}" readonly />
+                  <input class="form-field is-readonly" type="text" name="product_category" value="${productData.categoryLabel}" readonly />
+                </div>
+              </div>
+
+              <div class="form-section">
+                <div class="form-section-title">
+                  <strong>Choisir la couleur</strong>
+                  <span class="form-hint">Selectionnez la finition souhaitee pour ce produit.</span>
+                </div>
+                <div class="color-grid">${finishCards}</div>
+                <div class="selection-note" id="selected-finish-note">
+                  <span>Couleur active :</span>
+                  <strong>${activeFinish?.label || productData.colorLabel}</strong>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <div class="form-section-title">
+                  <strong>Mesures sur commande</strong>
+                  <span class="form-hint">${measurementHint}</span>
+                </div>
+                <div class="form-grid">${measurementFields}</div>
+              </div>
+
+              <div class="form-section">
+                <div class="form-section-title">
+                  <strong>Vos coordonnees</strong>
+                  <span class="form-hint">Nous utilisons ces informations pour vous recontacter.</span>
+                </div>
+                <div class="form-grid">
+                  <input class="form-field" type="text" name="client_name" placeholder="Nom complet" required />
+                  <input class="form-field" type="tel" name="client_phone" placeholder="Telephone" required />
+                  <input class="form-field" type="email" name="client_email" placeholder="Email" />
+                  <input class="form-field" type="text" name="client_city" placeholder="Ville / Projet" />
+                  <textarea class="form-textarea" name="client_message" placeholder="Precisez vos besoins, quantite, delai ou toute information utile."></textarea>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn btn-primary" type="submit" id="add-to-cart-btn">Ajouter au panier</button>
+                <a class="btn btn-whatsapp" id="whatsapp-order-link" href="#" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>
+                <a class="btn btn-secondary" href="products.html">Retour au catalogue</a>
+              </div>
+
+              <div class="form-summary" id="form-summary"></div>
+
+              <div class="contact-shortcuts">
+                <a class="contact-chip" href="tel:+212522700952">Fixe : 05 22 70 09 52</a>
+                <a class="contact-chip" href="tel:+212679191230">Mobile : +212 679 191230</a>
+                <a class="contact-chip" href="https://www.instagram.com/empirestone_morocco" target="_blank" rel="noopener">Instagram</a>
+              </div>
+            </form>
+          </div>
+        </section>
+      `;
+
+      Array.from(page.querySelectorAll('img')).forEach(image => {
+        image.addEventListener('error', handleImageError);
+      });
+
+      bindGallery(productData.photos);
+      bindQuoteForm(productData, finishes);
+    }
+
+    function createMeasurementFields(productData) {
+      if (productData.category === 'hardstone-ceramiques') {
+        return `
+          <select class="form-field" name="capacite" id="ceramic-capacity-select" required>
+            <option value="" disabled selected>Choisir la capacite (Personnes)</option>
+            <option value="6 personnes (14500 dh)" data-price="14500">6 personnes - 14500 dh</option>
+            <option value="8 personnes (16000 dh)" data-price="16000">8 personnes - 16000 dh</option>
+            <option value="10 personnes (20000 dh)" data-price="20000">10 personnes - 20000 dh</option>
+            <option value="12 personnes (23000 dh)" data-price="23000">12 personnes - 23000 dh</option>
+            <option value="14 personnes (26000 dh)" data-price="26000">14 personnes - 26000 dh</option>
+          </select>
+        `;
+      }
+
+      const labels = productData.category === 'chaises' || productData.category === 'fauteuils' || productData.category === 'bancs'
+        ? ['Hauteur d assise', 'Largeur', 'Profondeur']
+        : hasRoundReference(productData)
+          ? ['Diametre', 'Hauteur']
+          : ['Longueur', 'Largeur', 'Hauteur'];
+
+      return labels.map(label => `
+        <input class="form-field" type="text" name="${slugifyLabel(label)}" placeholder="${label} en cm" />
+      `).join('');
+    }
+
+    function getMeasurementLines(productData) {
+      return Array.isArray(productData.measurements)
+        ? productData.measurements.filter(line => String(line || '').trim() !== '')
+        : [];
+    }
+
+    function splitMeasurementLine(line) {
+      const cleanLine = String(line || '').trim();
+      const separatorIndex = cleanLine.indexOf(':');
+
+      if (separatorIndex === -1) {
+        return {
+          label: 'Mesure',
+          value: cleanLine || 'Sur commande'
+        };
+      }
+
+      return {
+        label: cleanLine.slice(0, separatorIndex).trim(),
+        value: cleanLine.slice(separatorIndex + 1).trim()
+      };
+    }
+
+    function renderMeasurementCards(productData) {
+      const measurementLines = getMeasurementLines(productData);
+      if (!measurementLines.length) {
+        return `
+          <div class="meta-card">
+            <small>Mesures</small>
+            <strong>Sur commande</strong>
+          </div>
+        `;
+      }
+
+      return measurementLines.map(line => {
+        const measurement = splitMeasurementLine(line);
+        return `
+          <div class="meta-card">
+            <small>${measurement.label}</small>
+            <strong>${measurement.value}</strong>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function buildMeasurementHint(productData) {
+      const measurementLines = getMeasurementLines(productData);
+      return measurementLines.length
+        ? `Reference du modele : ${measurementLines.join(' | ')}.`
+        : 'Indiquez vos dimensions si elles sont deja connues.';
+    }
+
+    function hasRoundReference(productData) {
+      return getMeasurementLines(productData).some(line => /^diametre\s*:/i.test(String(line || '').trim()));
+    }
+
+    function slugifyLabel(text) {
+      return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '_')
+        .replace(/^_+|_+$/g, '');
+    }
+
+    function renderColorOption(finish, activeFinishId, index) {
+      const isCurrent = finish.id === activeFinishId;
+      const badge = isCurrent ? 'Selectionnee' : 'Disponible';
+      const media = finish.image
+        ? `<img src="${finish.image}" alt="${finish.label}" loading="lazy" />`
+        : '<div class="finish-placeholder" aria-hidden="true"></div>';
+
+      return `
+        <label class="color-option" style="--stagger: ${index};">
+          <input type="radio" name="finish" value="${finish.label}" ${isCurrent ? 'checked' : ''} />
+          <article class="finish-card${isCurrent ? ' is-current' : ''}" data-family="${finish.family}">
+            <div class="finish-media">${media}</div>
+            <div class="finish-copy">
+              <h3>${finish.label}</h3>
+              <span>${badge}</span>
+            </div>
+          </article>
+        </label>
+      `;
+    }
+
+    function renderPricingBlock(productData) {
+      return '';
+    }
+
+    function bindGallery(photos) {
+      const mainImage = document.getElementById('main-product-image');
+      const buttons = Array.from(page.querySelectorAll('[data-thumb-index]'));
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const index = Number.parseInt(button.dataset.thumbIndex || '0', 10);
+          const targetPhoto = photos[index];
+          if (!targetPhoto) return;
+
+          mainImage.src = getSafeImageSrc(targetPhoto.src);
+          mainImage.alt = targetPhoto.alt;
+
+          buttons.forEach(item => item.classList.remove('is-active'));
+          button.classList.add('is-active');
+        });
+      });
+    }
+
+    function bindQuoteForm(productData, finishes) {
+      const form = document.getElementById('product-order-form');
+      const summary = document.getElementById('form-summary');
+      const whatsappLink = document.getElementById('whatsapp-order-link');
+      const selectedFinishLabel = document.getElementById('selected-finish-label');
+      const selectedFinishNote = document.getElementById('selected-finish-note');
+      if (!form || !summary || !whatsappLink) return;
+
+      const measurementKeys = ['longueur', 'largeur', 'hauteur', 'hauteur_d_assise', 'profondeur', 'diametre', 'capacite'];
+
+      function collectState() {
+        const data = new FormData(form);
+        const fallbackFinish = finishes.find(item => item.id === productData.finishId)?.label || productData.colorLabel;
+        const finishLabel = String(data.get('finish') || fallbackFinish || '').trim();
+        const measurementEntries = Array.from(data.entries())
+          .filter(([key, value]) => measurementKeys.includes(key) && String(value).trim() !== '')
+          .map(([key, value]) => key === 'capacite' ? `${readableMeasurementLabel(key)} : ${String(value).trim()}` : `${readableMeasurementLabel(key)} : ${String(value).trim()} cm`);
+
+        return {
+          finishLabel,
+          clientName: String(data.get('client_name') || '').trim(),
+          clientPhone: String(data.get('client_phone') || '').trim(),
+          clientEmail: String(data.get('client_email') || '').trim(),
+          clientCity: String(data.get('client_city') || '').trim(),
+          clientMessage: String(data.get('client_message') || '').trim(),
+          measurementEntries
+        };
+      }
+
+      function buildWhatsappMessage(state) {
+        const measurementReference = getMeasurementLines(productData);
+        const lines = [
+          'Bonjour Empire Stone,',
+          '',
+          `Je souhaite recevoir un devis pour le produit "${productData.title}".`,
+          `Categorie : ${productData.categoryLabel}.`,
+          measurementReference.length ? `Reference du modele : ${measurementReference.join(' | ')}.` : '',
+          `Couleur / finition choisie : ${state.finishLabel}.`,
+          state.measurementEntries.length
+            ? `Mesures demandees : ${state.measurementEntries.join(', ')}.`
+            : 'Mesures : sur commande, a definir avec vous.',
+          state.clientCity ? `Ville / projet : ${state.clientCity}.` : '',
+          state.clientMessage ? `Besoin complementaire : ${state.clientMessage}.` : '',
+          '',
+          'Mes coordonnees :',
+          state.clientName ? `Nom : ${state.clientName}` : '',
+          state.clientPhone ? `Telephone : ${state.clientPhone}` : '',
+          state.clientEmail ? `Email : ${state.clientEmail}` : '',
+          '',
+          'Merci de me communiquer le delai et la disponibilite.'
+        ].filter(Boolean);
+
+        return lines.join('\n');
+      }
+
+      function renderSummary(state, message) {
+        const measurementReference = getMeasurementLines(productData);
+        const summaryLines = [
+          'Demande prete pour WhatsApp.',
+          '',
+          `Produit : ${productData.title}`,
+          measurementReference.length ? `Reference : ${measurementReference.join(' | ')}` : '',
+          `Couleur : ${state.finishLabel}`,
+          state.measurementEntries.length
+            ? `Mesures : ${state.measurementEntries.join(' | ')}`
+            : 'Mesures : sur commande',
+          state.clientName ? `Nom : ${state.clientName}` : '',
+          state.clientPhone ? `Telephone : ${state.clientPhone}` : '',
+          state.clientCity ? `Ville / Projet : ${state.clientCity}` : '',
+          '',
+          'Texte WhatsApp :',
+          message
+        ].filter(Boolean);
+
+        summary.classList.add('is-visible');
+        summary.textContent = summaryLines.join('\n');
+      }
+
+      function updateSelectedFinishUI(finishLabel) {
+        if (selectedFinishLabel) {
+          selectedFinishLabel.textContent = finishLabel;
+        }
+
+        if (selectedFinishNote) {
+          selectedFinishNote.innerHTML = `<span>Couleur active :</span><strong>${finishLabel}</strong>`;
+        }
+
+        Array.from(form.querySelectorAll('.color-option')).forEach(option => {
+          const input = option.querySelector('input');
+          const card = option.querySelector('.finish-card');
+          const badge = option.querySelector('.finish-copy span');
+          const isChecked = Boolean(input?.checked);
+
+          if (card) {
+            card.classList.toggle('is-current', isChecked);
+          }
+
+          if (badge) {
+            badge.textContent = isChecked ? 'Selectionnee' : 'Disponible';
+          }
+        });
+      }
+
+      function syncWhatsappPreview() {
+        const state = collectState();
+        const whatsappMessage = buildWhatsappMessage(state);
+        const whatsappUrl = `https://wa.me/212679191230?text=${encodeURIComponent(whatsappMessage)}`;
+
+        updateSelectedFinishUI(state.finishLabel);
+        whatsappLink.href = whatsappUrl;
+        renderSummary(state, whatsappMessage);
+      }
+
+      form.addEventListener('input', syncWhatsappPreview);
+      form.addEventListener('change', syncWhatsappPreview);
+
+      whatsappLink.addEventListener('click', event => {
+        syncWhatsappPreview();
+
+        if (!form.reportValidity()) {
+          event.preventDefault();
+        }
+      });
+
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        
+        const state = collectState();
+        
+        let dynamicPrice = productData.pricing?.value || 'Sur devis';
+        if (productData.category === 'hardstone-ceramiques') {
+          const capaciteSelect = document.getElementById('ceramic-capacity-select');
+          if (capaciteSelect && capaciteSelect.selectedIndex > 0) {
+            dynamicPrice = capaciteSelect.options[capaciteSelect.selectedIndex].dataset.price || dynamicPrice;
+          }
+        }
+
+        const cartItem = {
+          id: productData.slug,
+          title: productData.title,
+          image: productData.cover,
+          price: dynamicPrice,
+          options: {
+            'Couleur': state.finishLabel,
+            ...Object.fromEntries(
+              state.measurementEntries.map(e => e.split(' : ').map(s => s.trim()))
+            )
+          }
+        };
+        
+        if (window.EmpireCart) {
+          window.EmpireCart.add(cartItem);
+        } else {
+          alert("Panier non disponible");
+        }
+      });
+
+      syncWhatsappPreview();
+    }
+
+    function readableMeasurementLabel(key) {
+      const labels = {
+        longueur: 'Longueur',
+        largeur: 'Largeur',
+        hauteur: 'Hauteur',
+        diametre: 'Diametre',
+        hauteur_d_assise: 'Hauteur d assise',
+        profondeur: 'Profondeur',
+        capacite: 'Capacite'
+      };
+
+      return labels[key] || key;
+    }
+  </script>
+  <script src="cart.js"></script>
+</body>
+</html>

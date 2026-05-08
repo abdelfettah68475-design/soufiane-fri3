@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidéos | Empire Stone</title>
+  <meta name="description" content="Vidéos des installations et des produits Empire Stone." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --navy-950: #082f57;
+      --navy-900: #0b4278;
+      --navy-800: #0f5a9c;
+      --navy-700: #156fbe;
+      --sky-100: #f6fbff;
+      --sky-150: #eef6ff;
+      --paper: #ffffff;
+      --ink-950: #10213b;
+      --ink-700: #5f7392;
+      --line: rgba(16, 54, 102, 0.13);
+      --shadow-soft: 0 24px 70px rgba(17, 80, 140, 0.13);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --container: min(1240px, calc(100% - 40px));
+      --font-body: "Instrument Sans", sans-serif;
+      --font-ui: "Instrument Sans", sans-serif;
+      --font-display: "Cormorant Garamond", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--ink-950);
+      background: linear-gradient(180deg, #f8fbff 0%, #eff6fb 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img,
+    video {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      width: var(--container);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(16, 54, 102, 0.08);
+    }
+
+    .nav-shell {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      object-fit: cover;
+      background: var(--paper);
+      border: 1px solid rgba(15, 83, 146, 0.08);
+    }
+
+    .brand-copy strong {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+
+    .brand-copy small {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink-700);
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-family: var(--font-ui);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--ink-950);
+    }
+
+    .main-nav a {
+      position: relative;
+    }
+
+    .main-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--navy-700);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 180ms ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a:focus-visible::after,
+    .main-nav a.is-current::after {
+      transform: scaleX(1);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--navy-700), var(--navy-900));
+      color: var(--paper);
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(16, 91, 164, 0.22);
+    }
+
+    .page-hero {
+      padding: 100px 0 40px;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 5vw, 4.6rem);
+      line-height: 0.92;
+      margin-bottom: 18px;
+    }
+
+    .page-hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--ink-700);
+      font-size: 1.05rem;
+    }
+
+    .video-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 40px 0 80px;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(16, 54, 102, 0.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .video-card.is-featured {
+      grid-column: 1 / -1;
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .video-card video {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #000;
+    }
+
+    .video-card.is-featured video {
+      aspect-ratio: 16 / 10;
+    }
+
+    .video-copy {
+      padding: 18px 20px 22px;
+    }
+
+    .video-copy h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--ink-950);
+    }
+
+    .video-copy p {
+      color: var(--ink-700);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .footer {
+      padding: 40px 0 30px;
+      color: var(--ink-700);
+      text-align: center;
+    }
+
+    @media (max-width: 980px) {
+      .video-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-shell {
+        flex-wrap: wrap;
+      }
+      .main-nav {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html" aria-label="Empire Stone">
+        <img class="brand-mark" src="logo.jpeg" alt="Logo Empire Stone" loading="eager" decoding="async" />
+        <span class="brand-copy">
+          <strong>EMPIRE<span>STONE</span></strong>
+          <small>Bringing quality of life</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="marbre-sur-mesure.html">Marbre sur mesure</a>
+        <a class="is-current" href="videos.html">Vidéos</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="btn" href="contact.html">Demander un devis</a>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>videos de livraison et installation des produits empirestone</h1>
+        <p>Découvrez les vidéos de nos réalisations, installations et produits. Toutes les vidéos du dossier sont accessibles ici.</p>
+      </div>
+    </section>
+    <section class="container">
+      <div class="section-heading">
+        <h2>Nos vidéos</h2>
+        <p>Appuyez sur lecture pour voir chaque projet et produit en action.</p>
+      </div>
+      <div class="video-grid">
+        <article class="video-card is-featured">
+          <video controls muted playsinline preload="metadata">
+            <source src="WhatsApp%20Video%202026-05-06%20at%2023.43.23.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>1</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="WhatsApp%20Video%202026-05-06%20at%2023.49.43.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>2</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="WhatsApp%20Video%202026-05-06%20at%2023.49.43%20%281%29.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>3</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="102.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>4</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="103.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>5</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="11.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>6</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="12.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>7</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="13.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>8</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="2.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>9</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="23.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>10</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="4.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>11</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="5.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>12</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="6.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>13</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="9.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>14</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="99.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>15</h3>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="nouveau%20photos%20pour%20meme%20produit/WhatsApp%20Video%202026-05-07%20at%2014.36.15.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>16</h3>
+            <p>Ajout video depuis le dossier nouveau photos pour meme produit.</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="nouveau%20photos%20pour%20meme%20produit/WhatsApp%20Video%202026-05-07%20at%2014.58.16.mp4" type="video/mp4" />
+          </video>
+          <div class="video-copy">
+            <h3>17</h3>
+            <p>Ajout video depuis le dossier nouveau photos pour meme produit.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p>Toutes les vidéos sont chargées depuis le dossier racine du site.</p>
+    </div>
+  </footer>
+  <script src="cart.js"></script>
+</body>
+</html>
