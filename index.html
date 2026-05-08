@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -2410,7 +2410,7 @@
       <nav class="main-nav" aria-label="Navigation principale">
         <a href="products.html">Produits</a>
         <a href="marbre-sur-mesure.html">Marbre sur mesure</a>
-        <a href="videos.html">Vidéos</a>
+        <a href="videos.html">VidÃ©os</a>
         <a href="contact.html">Contact</a>
       </nav>
 
@@ -2600,10 +2600,10 @@
       <div class="container">
         <div class="section-heading" data-reveal>
           <div>
-            <span class="section-tag">Catégories</span>
-            <h2>Nos familles de mobilier à découvrir.</h2>
+            <span class="section-tag">CatÃ©gories</span>
+            <h2>Nos familles de mobilier Ã  dÃ©couvrir.</h2>
             <p>
-              Retrouvez les catégories principales sur la page Produits, avec recherche par nom et filtres couleurs.
+              Retrouvez les catÃ©gories principales sur la page Produits, avec recherche par nom et filtres couleurs.
             </p>
           </div>
           <a class="section-link" href="products.html">Voir tous les produits</a>
@@ -2618,7 +2618,7 @@
         <div class="categories-grid" data-reveal>
           <a class="category-card" href="products.html?category=tables-basses">
             <strong>Tables basses</strong>
-            <p>Mobiliers bas et raffinés pour salon et espace de vie.</p>
+            <p>Mobiliers bas et raffinÃ©s pour salon et espace de vie.</p>
           </a>
           <a class="category-card" href="products.html?category=tables-repas">
             <strong>Tables de repas</strong>
@@ -2630,7 +2630,7 @@
           </a>
           <a class="category-card" href="products.html?category=chaises">
             <strong>Chaises</strong>
-            <p>Assises confortables et designs pour salle à manger et salon.</p>
+            <p>Assises confortables et designs pour salle Ã  manger et salon.</p>
           </a>
         </div>
       </div>
@@ -2721,7 +2721,7 @@
             </div>
             <a
               class="review-link"
-              href="https://www.google.com/search?q=empire+stone&amp;oq=empire+s&amp;gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MgYIAhAjGCcyEggDEAAYFBiDARiHAhixAxiABDINCAQQLhivARjHARiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDQwMThqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#lrd=0xda7cd818f35d271:0x5d2d63e512a37ea7,1,,,,"
+              href="https://www.google.com/maps/search/?api=1&query=EMPIRE%20STONE%2C%20NUMERO%2066%2C%20Rue%203%2C%20Casablanca%2020700"
               target="_blank"
               rel="noopener"
             >
@@ -2813,7 +2813,7 @@
 
             <div class="contact-item is-small is-address">
               <small>Showroom</small>
-              <a href="https://www.google.com/search?q=empire+stone&amp;oq=empire+s&amp;gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MgYIAhAjGCcyEggDEAAYFBiDARiHAhixAxiABDINCAQQLhivARjHARiABDIGCAUQRRg8MgYIBhBFGDwyBggHEEUYPNIBCDQwMThqMGo3qAIAsAIA&amp;sourceid=chrome&amp;ie=UTF-8#lrd=0xda7cd818f35d271:0x5d2d63e512a37ea7,1,,,," target="_blank" rel="noopener">
+              <a href="https://www.google.com/maps/search/?api=1&query=EMPIRE%20STONE%2C%20NUMERO%2066%2C%20Rue%203%2C%20Casablanca%2020700" target="_blank" rel="noopener">
                 Num&eacute;ro 66, Rue 3, Casablanca 20700, Maroc
               </a>
             </div>
@@ -2905,7 +2905,9 @@
     ];
     let currentStoneThemeIndex = -1;
     let stoneThemeResetTimeout = 0;
-    const stoneThemeIntervalMs = 3000;
+    let stoneThemeAutoRotate = 0;
+    const stoneThemeIntervalMs = 5000;
+    const stoneThemeKinds = ["marbre", "granit", "ceramique"];
 
     function hexToRgb(hex) {
       const value = (hex || "").replace("#", "").trim();
@@ -3009,6 +3011,26 @@
       return picked.index;
     }
 
+    function getNextStoneThemeIndexByNextKind() {
+      const currentKind = stoneThemes[currentStoneThemeIndex]?.kind || stoneThemeKinds[0];
+      const currentKindIndex = stoneThemeKinds.indexOf(currentKind);
+      const nextKind = stoneThemeKinds[(currentKindIndex + 1 + stoneThemeKinds.length) % stoneThemeKinds.length];
+      return getNextStoneThemeIndexByKind(nextKind);
+    }
+
+    function rotateStoneTheme() {
+      const nextThemeIndex = getNextStoneThemeIndexByNextKind();
+      applyStoneTheme(stoneThemes[nextThemeIndex], nextThemeIndex);
+    }
+
+    function restartStoneAutoRotate() {
+      window.clearInterval(stoneThemeAutoRotate);
+
+      if (!prefersReducedMotion && hero && stoneThemes.length > 1) {
+        stoneThemeAutoRotate = window.setInterval(rotateStoneTheme, stoneThemeIntervalMs);
+      }
+    }
+
     function applyStoneTheme(theme, index, options = {}) {
       if (!hero || !theme) {
         return;
@@ -3087,24 +3109,14 @@
       const initialThemeIndex = getNextStoneThemeIndex();
       applyStoneTheme(stoneThemes[initialThemeIndex], initialThemeIndex);
 
-      if (!prefersReducedMotion) {
-        window.setInterval(() => {
-          applyStoneTheme(stoneThemes[currentStoneThemeIndex], currentStoneThemeIndex, {
-            accentRgb: getRandomStoneAccent(),
-            updateTexture: false,
-            updateLabels: false,
-            updateButtons: false,
-            updateKind: false,
-            updateIndex: false,
-          });
-        }, stoneThemeIntervalMs);
-      }
+      restartStoneAutoRotate();
     }
 
     themeButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const nextThemeIndex = getNextStoneThemeIndexByKind(button.dataset.themeStep);
         applyStoneTheme(stoneThemes[nextThemeIndex], nextThemeIndex);
+        restartStoneAutoRotate();
       });
     });
 
