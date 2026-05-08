@@ -772,28 +772,28 @@
         'casa naturel.png',
         'casa naturel1.png'
       ]),
-      createSupplementalAccentGroup('Colones travertin zarok', [
+      createSupplementalBaseGroup('Colones travertin zarok', [
         'Colones travertin zarok1.png',
         'Colones travertin zarok2.png'
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
-      createSupplementalAccentGroup('Colonne de marbre baya', [
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 2800}),
+      createSupplementalBaseGroup('Colonne de marbre baya', [
         'Colonne de marbre baya.png'
-      ]),
-      createSupplementalAccentGroup('Colonne travertin zinaya', [
+      ], {priceValue: 5600}),
+      createSupplementalBaseGroup('Colonne travertin zinaya', [
         'Colonne travertin zinaya.png'
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 5600}),
       createSupplementalAccentGroup("Table d'appoint duo celia", [
         "Table d'appoint duo celia.png"
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 2500}),
       createSupplementalAccentGroup("Table d'appoint elsa", [
         "Table d'appoint elsa.png"
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 1200}),
       createSupplementalAccentGroup("Table d'appoint fedora", [
         "Table d'appoint fedora.png"
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 1200}),
       createSupplementalAccentGroup("Table d'appoint ivo", [
         "Table d'appoint ivo.png"
-      ], {color: 'travertin', colorLabel: 'Travertin'}),
+      ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 1450}),
       createSupplementalAccentGroup("Table d'appoint travertin 1", [
         'table dappoint  travertin 1450 dh.jpeg'
       ], {color: 'travertin', colorLabel: 'Travertin', priceValue: 1450}),
@@ -1169,6 +1169,25 @@
 
       if (source.includes('cube tika')) {
         next.title = 'Cube tika marbre';
+      }
+
+      if (source.includes('colones travertin zarok')) {
+        next.title = 'Colones travertin zarok';
+        next.category = 'tables-basses';
+        next.color = 'travertin';
+        next.colorLabel = 'Travertin';
+      }
+
+      if (source.includes('colonne de marbre baya')) {
+        next.title = 'Colonne de marbre baya';
+        next.category = 'tables-basses';
+      }
+
+      if (source.includes('colonne travertin zinaya')) {
+        next.title = 'Colonne travertin zinaya';
+        next.category = 'tables-basses';
+        next.color = 'travertin';
+        next.colorLabel = 'Travertin';
       }
 
       if (
@@ -1633,6 +1652,27 @@
         };
       }
 
+      if (product.category === 'tables-appoint') {
+        const source = normalizeProductSignature(`${product.title || ''} ${product.alt || ''} ${product.coverAlt || ''}`);
+        const accentPriceRules = [
+          {keywords: ['colones', 'travertin', 'zarok'], value: 2800},
+          {keywords: ['colonne', 'marbre', 'baya'], value: 5600},
+          {keywords: ['colonne', 'travertin', 'zinaya'], value: 5600},
+          {keywords: ['travertin', 'zaho'], value: 1400},
+          {keywords: ['duo', 'celia'], value: 2500},
+          {keywords: ['appoint', 'elsa'], value: 1200},
+          {keywords: ['fedora'], value: 1200},
+          {keywords: ['appoint', 'ivo'], value: 1450}
+        ];
+        const accentPrice = accentPriceRules.find(rule => rule.keywords.every(keyword => source.includes(keyword)))?.value;
+        if (accentPrice) {
+          return {
+            badge: `${accentPrice} dh`,
+            value: accentPrice
+          };
+        }
+      }
+
       if (product.category === 'tables-repas') {
         const source = normalizeProductSignature(`${product.title || ''} ${product.alt || ''} ${product.coverAlt || ''}`);
         const diningPriceRules = [
@@ -1690,7 +1730,10 @@
         'trio casa naturel tables basses marbre': 3600,
         'trio gris thundra': 3600,
         'trio tables basses en travertin nouma': 3600,
-        'trio taza naturel tables basses marbre': 3600
+        'trio taza naturel tables basses marbre': 3600,
+        'colones travertin zarok': 2800,
+        'colonne de marbre baya': 5600,
+        'colonne travertin zinaya': 5600
       };
 
       const sig = normalizeProductSignature(product.title || product.alt || '');
