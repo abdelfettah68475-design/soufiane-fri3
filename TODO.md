@@ -1,0 +1,29 @@
+# TODO - Empire Stone (Tables)
+
+- [ ] Remplacer les libellés “Tables de repas” / “table de repas” -> “table a manger” (UI + meta/keywords si présents)
+- [ ] Supprimer (exclure) les produits demandés :
+  - [ ] Table basse astra
+  - [ ] Table basse sahel chene
+  - [ ] Table basse sahel chene table basse
+  - [ ] Table basse sahel chene (variantes)
+  - [ ] Table basse suma beige
+- [ ] Mettre à jour les prix pour les produits “Tables basses …” listés via `priceValue`
+  - [ ] Trio moka béton/cire/bois -> 3600 dh
+  - [ ] Table basse travertin tessa noir royal -> 2600 dh
+  - [ ] Tables basses travertin étoile mobilier -> 2600 dh (ajouter prix)
+  - [ ] Tables basses duo moka beton cire bois -> 2800 dh + enlever “beton” dans le libellé affiché
+  - [ ] Trio tables basses travertin nouma -> 5900 dh
+  - [ ] Tables basses travertin luna -> 4100 dh
+  - [ ] Table basse travertin zoe -> 1450 dh
+  - [ ] Table basse zana travertin -> 2800 dh
+  - [ ] Table basse yara -> 3600 dh
+  - [ ] Table basse moka beton cire bois -> 1800 dh
+  - [ ] Table basse travertin horus carre -> 5400 dh
+  - [ ] Table basse sahel marbre noir -> 3900 dh
+  - [ ] Table basse horus travertin -> 4900 dh
+  - [ ] Table basse sahel -> 2800 dh
+  - [ ] Cube tika marbre -> 3200 dh
+  - [ ] Table basse esmee -> 4900 dh
+  - [ ] Table basse honore travertin bois -> 2800 dh
+- [ ] Normaliser affichage “enlever beton” : remplacer “moka beton cire bois” -> “moka cire bois” dans le `title` pour les produits concernés
+- [ ] Vérification finale : charger `products.html` et contrôler les prix + suppression des produits

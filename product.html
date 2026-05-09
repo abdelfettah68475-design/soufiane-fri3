@@ -3,18 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fiche produit marbre, travertin et mobilier sur mesure | Empire Stone</title>
-  <meta name="description" content="Fiche produit Empire Stone: table a manger, table basse ou table d'appoint en marbre, travertin, granit, ceramique et tadelakt, avec prix et devis." />
-  <meta name="keywords" content="table marbre prix Maroc, table travertin prix, table basse marbre, table d appoint travertin, table ceramique, mobilier design Casablanca" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link rel="canonical" href="https://abdelfettahundertaker-cpu.github.io/rempirestone/product.html" />
-  <meta property="og:type" content="product" />
-  <meta property="og:locale" content="fr_MA" />
-  <meta property="og:site_name" content="Empire Stone" />
-  <meta property="og:title" content="Fiche produit Empire Stone" />
-  <meta property="og:description" content="Details, galerie, dimensions, prix et finitions pour les tables en marbre, travertin, granit, ceramique et tadelakt Empire Stone." />
-  <meta property="og:url" content="https://abdelfettahundertaker-cpu.github.io/rempirestone/product.html" />
-  <meta property="og:image" content="https://abdelfettahundertaker-cpu.github.io/rempirestone/logo.jpeg" />
+  <title>Produit | Empire Stone</title>
+  <meta name="description" content="Fiche produit Empire Stone avec galerie, description, mesures sur commande et finitions disponibles." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -396,6 +386,97 @@
       color: var(--ink-950);
     }
 
+    .ceramic-sizing-panel {
+      margin-top: 26px;
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(16, 54, 102, 0.1);
+      box-shadow: 0 18px 38px rgba(16, 91, 164, 0.1);
+    }
+
+    .ceramic-sizing-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .ceramic-sizing-title strong {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-950);
+    }
+
+    .ceramic-sizing-title span {
+      color: var(--ink-700);
+      font-size: 0.9rem;
+      text-align: right;
+    }
+
+    .ceramic-size-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .ceramic-size-option {
+      position: relative;
+      display: block;
+      cursor: pointer;
+    }
+
+    .ceramic-size-option input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .ceramic-size-card {
+      display: grid;
+      gap: 6px;
+      min-height: 112px;
+      padding: 15px 16px;
+      border: 1px solid rgba(16, 54, 102, 0.12);
+      background: var(--paper);
+      color: var(--ink-950);
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    }
+
+    .ceramic-size-card strong {
+      font-family: var(--font-ui);
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--ink-950);
+    }
+
+    .ceramic-size-card span {
+      color: var(--ink-700);
+      font-size: 0.88rem;
+    }
+
+    .ceramic-size-card b {
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      color: var(--navy-900);
+    }
+
+    .ceramic-size-option:hover .ceramic-size-card,
+    .ceramic-size-option input:focus-visible + .ceramic-size-card {
+      transform: translateY(-2px);
+      border-color: rgba(21, 111, 190, 0.28);
+      box-shadow: 0 16px 30px rgba(16, 91, 164, 0.12);
+    }
+
+    .ceramic-size-option input:checked + .ceramic-size-card {
+      border-color: var(--ink-950);
+      box-shadow: inset 0 0 0 1px var(--ink-950), 0 16px 30px rgba(16, 91, 164, 0.12);
+    }
+
     .order-form {
       display: grid;
       gap: 24px;
@@ -610,6 +691,13 @@
       align-items: center;
     }
 
+    .shopify-buy-slot {
+      min-width: 180px;
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+    }
+
     .btn-whatsapp {
       background: linear-gradient(135deg, #25d366, #128c7e);
       color: var(--paper);
@@ -711,6 +799,10 @@
       .meta-grid {
         grid-template-columns: 1fr;
       }
+
+      .ceramic-size-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 720px) {
@@ -733,8 +825,18 @@
       }
 
       .form-grid,
-      .color-grid {
+      .color-grid,
+      .ceramic-size-grid {
         grid-template-columns: 1fr;
+      }
+
+      .ceramic-sizing-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .ceramic-sizing-title span {
+        text-align: left;
       }
 
       .main-visual {
@@ -772,8 +874,8 @@
       <nav class="main-nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
         <a href="products.html">Produits</a>
-        <a href="marbre-sur-mesure.html">Marbre sur mesure</a>
-        <a href="videos.html">Vidéos</a>
+        <a href="marbre-sur-mesure.html">Table sur mesure</a>
+        <a href="videos.html">Nos travaux r&eacute;alis&eacute;s</a>
         <a href="contact.html">Contact</a>
       </nav>
       <a class="btn btn-primary" href="contact.html">Demander un devis</a>
@@ -788,6 +890,14 @@
     const fallbackImage = 'logo.jpeg';
     const catalogStorageKey = 'empireStoneCatalogV4';
     const supplementalMediaFolder = 'marbre/nouveau photos pour meme produit';
+    const latestModificationsFolder = 'dernieres modificaions';
+    const blancIbizaDiningFolder = 'table manger blanc ibiza 4 personnes';
+    const trioCremaRoyaleFolder = 'triocremaroyaletablebasse';
+    const shopifyBuyConfig = {
+      domain: 'arhh00-dp.myshopify.com',
+      storefrontAccessToken: 'd2e68b6e6f17e94bcabde7491b30cc62',
+      moneyFormat: '{{amount}} dh'
+    };
     const ceramicFolderFiles = [
       'aurora crystal.png',
       'BELLISSIMA BEIGE.png',
@@ -838,26 +948,35 @@
     const officialTableBasseNames = [
       'Casa naturel table basse marbre',
       'Cube tika marbre',
+      'Duo crema royale',
       'Duo casa naturel tables basses marbre',
+      'Duo travertin table basse',
       'Duo taza naturel tables basses marbre',
       'Table basse astra',
       'Table basse celya bois',
       'Table basse esmee',
       'Table basse honore travertin bois',
       'Table basse horus travertin',
+      'Table basse moka cire bois',
       'Table basse sahel',
       'Table basse sahel chene',
       'Table basse sahel marbre noir',
+      'Table basse travertin tessa',
       'Table basse travertin horus carre',
       'Table basse wallen travertin bois',
       'Table basse yara',
       'Table basse zana travertin',
       'Tables basses duo celya bois',
       'Tables basses duo dana',
+      'Tables basses duo moka cire bois',
       'Tables basses duo wallen',
       'Tables basses suma beige',
+      'Tables basses travertin etoile mobilier',
       'Tables basses travertin luna',
+      'Tables basses travertin tessa noir royal',
       'Tables basses trio celya bois',
+      'Trio crema royale',
+      'Trio moka',
       'Taza naturel table basse marbre',
       'Trio casa naturel tables basses marbre',
       'Trio gris thundra',
@@ -927,7 +1046,10 @@
 
     function isSupplementalCatalogPhoto(src) {
       const decoded = decodeURIComponent(src || '').toLowerCase().replace(/\\/g, '/');
-      return decoded.includes(`${supplementalMediaFolder.toLowerCase()}/`);
+      return decoded.includes(`${supplementalMediaFolder.toLowerCase()}/`) ||
+        decoded.includes(`${latestModificationsFolder.toLowerCase()}/`) ||
+        decoded.includes(`${blancIbizaDiningFolder.toLowerCase()}/`) ||
+        decoded.includes(`${trioCremaRoyaleFolder.toLowerCase()}/`);
     }
 
     function normalizeCatalogPhotos(productData, category) {
@@ -985,6 +1107,13 @@
         return {
           label: 'Tables d&#x27;appoint',
           categoryLabel: 'Tables d&#x27;appoint'
+        };
+      }
+
+      if (category === 'tables-repas') {
+        return {
+          label: 'Tables a manger',
+          categoryLabel: 'Tables a manger'
         };
       }
 
@@ -1060,35 +1189,66 @@
 
     function sanitizeCatalogProduct(productData) {
       const description = String(productData.description || '').trim();
-      const cleanChairDescription = `${productData.title} est une chaise elegante concue pour s'accorder avec nos salles a manger en marbre et nos projets sur commande.`;
+      const cleanChairDescription = `${productData.title} est une assise selectionnee pour accompagner une table sur mesure Empire Stone. Son style reste sobre, confortable et facile a coordonner avec une salle a manger en marbre, travertin ou ceramique.`;
       const isHardstoneCeramic = productData.category === 'hardstone-ceramiques' || productData.category === 'tables-ceramiques';
       const organizedProduct = organizeCatalogProduct(productData, isHardstoneCeramic);
       const category = isHardstoneCeramic ? 'hardstone-ceramiques' : organizedProduct.category;
       const photos = normalizeCatalogPhotos(organizedProduct, category);
 
+      // "enlever beton" (option 1) => supprimer uniquement le mot "beton" dans le titre affiché.
+      if (organizedProduct.title && /moka\s+beton\s+cire\s+bois/i.test(organizedProduct.title)) {
+        organizedProduct.title = organizedProduct.title.replace(/moka\s+beton\s+cire\s+bois/i, 'moka cire bois');
+      }
+
+      if (organizedProduct.title) {
+        organizedProduct.title = organizedProduct.title.replace(/\btables?\s+de\s+repas\b/gi, match =>
+          match.toLowerCase().startsWith('tables') ? 'Tables a manger' : 'Table a manger'
+        ).replace(/\btables?\s+repas\b/gi, match =>
+          match.toLowerCase().startsWith('tables') ? 'Tables a manger' : 'Table a manger'
+        ).replace(/\bsidi\s+ghanem\b/gi, '').replace(/\s{2,}/g, ' ').trim();
+      }
+
+      const cleanDescriptionText = description
+        .replace(/\bTable de repas\b/g, 'Table a manger')
+        .replace(/\btable de repas\b/g, 'table a manger')
+        .replace(/\bsidi\s+ghanem\b/gi, '')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+      const cleanMeasurements = Array.isArray(organizedProduct.measurements)
+        ? organizedProduct.measurements.map(line => {
+            if (category !== 'tables-repas' || !/^Largeur\s*:/i.test(line)) return line;
+            return /leonie/i.test(organizedProduct.title || '') ? 'Largeur : 90 cm' : 'Largeur : au choix';
+          })
+        : organizedProduct.measurements;
+      const sourceForPrice = normalizeCatalogText(`${organizedProduct.title || ''} ${organizedProduct.coverAlt || ''} ${organizedProduct.cover || ''}`);
+      const forcedPricing = sourceForPrice.includes('bois noir absolu')
+        ? {badge: '4500 dh', value: 4500}
+        : null;
+      const shopifyProductId = organizedProduct.shopifyProductId || (sourceForPrice.includes('balzac') ? '10438391333157' : '');
+      const shopifyComponentId = organizedProduct.shopifyComponentId || (sourceForPrice.includes('balzac') ? 'product-component-1778343641364' : '');
+
       return {
         ...organizedProduct,
         category,
-        label: isHardstoneCeramic ? 'Hardstone ceramiques' : organizedProduct.label,
-        categoryLabel: isHardstoneCeramic ? 'Hardstone ceramiques' : organizedProduct.categoryLabel,
+        label: isHardstoneCeramic ? 'Tables hard stone' : organizedProduct.label,
+        categoryLabel: isHardstoneCeramic ? 'Tables hard stone' : organizedProduct.categoryLabel,
         photos: photos.length ? photos : organizedProduct.photos,
         cover: photos[0]?.src || organizedProduct.cover,
         coverAlt: photos[0]?.alt || organizedProduct.coverAlt,
         photoCount: photos.length || organizedProduct.photoCount,
         finishId: inferCatalogFinishId(organizedProduct),
-        pricing: isHardstoneCeramic
+        pricing: forcedPricing || (isHardstoneCeramic
           ? {badge: 'A partir de 14500 dh', value: 14500}
-          : organizedProduct.pricing,
-        priceBadge: isHardstoneCeramic ? 'A partir de 14500 dh' : organizedProduct.priceBadge,
+          : organizedProduct.pricing),
+        priceBadge: forcedPricing?.badge || (isHardstoneCeramic ? 'A partir de 14500 dh' : organizedProduct.priceBadge),
+        shopifyProductId,
+        shopifyComponentId,
         measurements: isHardstoneCeramic
           ? [
               '6 personnes : 14500 dh',
               '8 personnes : 16000 dh',
               '10 personnes : 20000 dh',
-              '12 personnes : 23000 dh',
-              '14 personnes : 26000 dh',
-              'Dimensions : sur mesure selon le client',
-              'Hauteur : 75 cm (base)'
+              '12 personnes : 23000 dh'
             ]
           : category === 'tables-basses'
           ? [
@@ -1097,11 +1257,39 @@
               'Dimensions : sur mesure selon le client',
               'Finition : sur commande'
             ]
-          : organizedProduct.measurements,
-        description: category === 'chaises' && /\bdh\b/i.test(description)
-          ? cleanChairDescription
-          : description
+          : cleanMeasurements,
+        description: buildSmartProductDescription(organizedProduct, category, cleanDescriptionText, cleanChairDescription)
       };
+    }
+
+    function buildSmartProductDescription(productData, category, cleanDescriptionText, cleanChairDescription) {
+      if (category === 'chaises' && (/\bdh\b/i.test(cleanDescriptionText) || !cleanDescriptionText)) {
+        return cleanChairDescription;
+      }
+
+      if (category === 'tables-repas') {
+        return `${productData.title} est une table a manger sur mesure pensee pour une salle a manger elegante. Choisissez la finition, les dimensions et la capacite afin d'obtenir une piece bien proportionnee pour votre interieur.`;
+      }
+
+      if (category === 'hardstone-ceramiques') {
+        return `${productData.title} est une table hard stone sur commande, avec une finition effet pierre elegante, durable et facile a vivre au quotidien.`;
+      }
+
+      if (category === 'tables-basses') {
+        if (/duo/i.test(productData.title || '')) {
+          return `${productData.title} est un ensemble duo de tables basses concu pour donner du rythme au salon avec deux volumes complementaires.`;
+        }
+        if (/trio/i.test(productData.title || '')) {
+          return `${productData.title} est un ensemble trio de tables basses ideal pour une composition coordonnee, pratique et visuellement raffinee.`;
+        }
+        return `${productData.title} est une table basse sur mesure au rendu mineral, adaptee a un interieur haut de gamme et confortable.`;
+      }
+
+      if (category === 'tables-appoint') {
+        return `${productData.title} est une table d'appoint decorative et fonctionnelle, ideale pour completer un salon, une chambre ou un coin lecture sans alourdir l'espace.`;
+      }
+
+      return cleanDescriptionText || `${productData.title} est un produit Empire Stone fabrique sur commande, avec une finition soignee et des dimensions adaptees a votre projet.`;
     }
 
     function resolveActiveFinishId(productData, finishes) {
@@ -1143,7 +1331,21 @@
         ['table', 'basse', 'ora'],
         ['naelle'],
         ['travertin', 'metal'],
-        ['flora', 'beige']
+        ['flora', 'beige'],
+
+        // ==== Suppressions demandées ====
+        ['table', 'basse', 'astra'],
+        ['table', 'basse', 'sahel', 'chene'],
+        ['table', 'basse', 'sahel', 'chene', 'table', 'basse'],
+        ['table', 'basse', 'suma', 'beige'],
+        ['tables', 'basses', 'suma', 'beige'],
+        ['table', 'basse', 'moka', 'cire', 'bois'],
+        ['table', 'basse', 'moka', 'beton', 'cire', 'bois'],
+        ['table', 'd', 'appoint', 'travertin', 'zaho'],
+        ['travertin', 'zaho'],
+        ['tables', 'basses', 'travertin', 'tessa'],
+        ['table', 'basse', 'travertin', 'tessa'],
+        ['travertin', 'tessa', 'noir', 'royal']
       ].some(pattern => pattern.every(word => source.includes(word)));
     }
 
@@ -1199,20 +1401,125 @@
       return value && !value.includes('${') ? value : fallbackImage;
     }
 
+    function getShopifyButtonOptions() {
+      return {
+        product: {
+          contents: {
+            img: false,
+            title: false,
+            price: false,
+            options: false
+          },
+          styles: {
+            product: {
+              width: 'auto',
+              'max-width': '100%',
+              'margin-left': '0',
+              'margin-bottom': '0'
+            },
+            button: {
+              'min-height': '48px',
+              'padding-left': '24px',
+              'padding-right': '24px',
+              'border-radius': '14px',
+              'background-color': '#156fbe',
+              'font-family': 'Instrument Sans, sans-serif',
+              'font-weight': '800',
+              ':hover': {
+                'background-color': '#0b4278'
+              },
+              ':focus': {
+                'background-color': '#0b4278'
+              }
+            }
+          },
+          text: {
+            button: 'Ajouter au panier'
+          }
+        },
+        cart: {
+          text: {
+            total: 'Sous-total',
+            button: 'Commander'
+          }
+        },
+        toggle: {}
+      };
+    }
+
+    let shopifyUiPromise = null;
+
+    function getShopifyUi() {
+      if (shopifyUiPromise) return shopifyUiPromise;
+
+      shopifyUiPromise = new Promise((resolve, reject) => {
+        const ready = () => {
+          if (!window.ShopifyBuy?.UI) {
+            reject(new Error('Shopify Buy UI indisponible'));
+            return;
+          }
+
+          const client = window.ShopifyBuy.buildClient({
+            domain: shopifyBuyConfig.domain,
+            storefrontAccessToken: shopifyBuyConfig.storefrontAccessToken
+          });
+
+          window.ShopifyBuy.UI.onReady(client).then(resolve).catch(reject);
+        };
+
+        if (window.ShopifyBuy?.UI) {
+          ready();
+          return;
+        }
+
+        const existingScript = document.querySelector('script[data-shopify-buy-sdk]');
+        if (existingScript) {
+          existingScript.addEventListener('load', ready, {once: true});
+          existingScript.addEventListener('error', reject, {once: true});
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.dataset.shopifyBuySdk = 'true';
+        script.src = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+        script.addEventListener('load', ready, {once: true});
+        script.addEventListener('error', reject, {once: true});
+        (document.head || document.body).appendChild(script);
+      });
+
+      return shopifyUiPromise;
+    }
+
+    function mountShopifyBuyButtons(root = document) {
+      const nodes = Array.from(root.querySelectorAll('[data-shopify-buy-button]'))
+        .filter(node => node.dataset.shopifyMounted !== 'true' && node.dataset.shopifyProductId);
+
+      if (!nodes.length) return;
+
+      getShopifyUi()
+        .then(ui => {
+          nodes.forEach(node => {
+            node.dataset.shopifyMounted = 'true';
+            node.innerHTML = '';
+            ui.createComponent('product', {
+              id: node.dataset.shopifyProductId,
+              node,
+              moneyFormat: shopifyBuyConfig.moneyFormat,
+              options: getShopifyButtonOptions()
+            });
+          });
+        })
+        .catch(error => {
+          console.warn('Impossible de charger le bouton Shopify.', error);
+        });
+    }
+
     function renderProductPage(productData, finishes) {
       const activeFinishId = resolveActiveFinishId(productData, finishes);
       const activeFinish = finishes.find(finish => finish.id === activeFinishId) || null;
       const finishCards = finishes.map((finish, index) => renderColorOption(finish, activeFinishId, index)).join('');
       const coverSrc = getSafeImageSrc(productData.cover);
-      document.title = `${productData.title} | Prix et devis Empire Stone Casablanca`;
-      const metaDescription = document.querySelector('meta[name="description"]');
-      if (metaDescription) {
-        metaDescription.setAttribute('content', `${productData.title} Empire Stone: ${productData.categoryLabel}, prix, galerie, finitions et devis sur mesure a Casablanca, Maroc.`);
-      }
-      const canonicalLink = document.querySelector('link[rel="canonical"]');
-      if (canonicalLink && productData.slug) {
-        canonicalLink.setAttribute('href', `https://abdelfettahundertaker-cpu.github.io/rempirestone/product.html?slug=${encodeURIComponent(productData.slug)}`);
-      }
       const thumbnails = productData.photos.map((photo, index) => `
         <button class="thumb-button${index === 0 ? ' is-active' : ''}" type="button" data-thumb-index="${index}">
           <img src="${getSafeImageSrc(photo.src)}" alt="${photo.alt}" loading="lazy" />
@@ -1220,8 +1527,20 @@
         </button>
       `).join('');
       const measurementFields = createMeasurementFields(productData);
-      const measurementCards = renderMeasurementCards(productData);
+      const measurementCards = productData.category === 'hardstone-ceramiques' ? '' : renderMeasurementCards(productData);
       const measurementHint = buildMeasurementHint(productData);
+      const ceramicSizingPanel = renderCeramicSizingPanel(productData);
+      const measurementFormSection = productData.category === 'hardstone-ceramiques'
+        ? measurementFields
+        : `
+              <div class="form-section">
+                <div class="form-section-title">
+                  <strong>Mesures sur commande</strong>
+                  <span class="form-hint">${measurementHint}</span>
+                </div>
+                <div class="form-grid">${measurementFields}</div>
+              </div>
+        `;
       page.innerHTML = `
         <div class="breadcrumb">Produit Empire Stone</div>
 
@@ -1238,6 +1557,7 @@
             <span class="product-tag">${productData.categoryLabel}</span>
             <h1>${productData.title}</h1>
             <p class="lead">${productData.description || 'Choisissez la couleur souhaitee, indiquez vos dimensions sur commande et envoyez votre demande pour ce produit.'}</p>
+            ${ceramicSizingPanel}
 
             <div class="meta-grid">
               <div class="meta-card">
@@ -1279,13 +1599,7 @@
                 </div>
               </div>
 
-              <div class="form-section">
-                <div class="form-section-title">
-                  <strong>Mesures sur commande</strong>
-                  <span class="form-hint">${measurementHint}</span>
-                </div>
-                <div class="form-grid">${measurementFields}</div>
-              </div>
+              ${measurementFormSection}
 
               <div class="form-section">
                 <div class="form-section-title">
@@ -1302,7 +1616,9 @@
               </div>
 
               <div class="form-actions">
-                <button class="btn btn-primary" type="submit" id="add-to-cart-btn">Ajouter au panier</button>
+                ${productData.shopifyProductId
+                  ? `<div class="shopify-buy-slot" id="${productData.shopifyComponentId || `shopify-${productData.slug}`}" data-shopify-buy-button data-shopify-product-id="${productData.shopifyProductId}"><button class="btn btn-primary" type="submit" id="add-to-cart-btn">Ajouter au panier</button></div>`
+                  : '<button class="btn btn-primary" type="submit" id="add-to-cart-btn">Ajouter au panier</button>'}
                 <a class="btn btn-whatsapp" id="whatsapp-order-link" href="#" target="_blank" rel="noopener">Envoyer sur WhatsApp</a>
                 <a class="btn btn-secondary" href="products.html">Retour au catalogue</a>
               </div>
@@ -1325,20 +1641,13 @@
 
       bindGallery(productData.photos);
       bindQuoteForm(productData, finishes);
+      mountShopifyBuyButtons(page);
     }
 
     function createMeasurementFields(productData) {
       if (productData.category === 'hardstone-ceramiques') {
-        return `
-          <select class="form-field" name="capacite" id="ceramic-capacity-select" required>
-            <option value="" disabled selected>Choisir la capacite (Personnes)</option>
-            <option value="6 personnes (14500 dh)" data-price="14500">6 personnes - 14500 dh</option>
-            <option value="8 personnes (16000 dh)" data-price="16000">8 personnes - 16000 dh</option>
-            <option value="10 personnes (20000 dh)" data-price="20000">10 personnes - 20000 dh</option>
-            <option value="12 personnes (23000 dh)" data-price="23000">12 personnes - 23000 dh</option>
-            <option value="14 personnes (26000 dh)" data-price="26000">14 personnes - 26000 dh</option>
-          </select>
-        `;
+        const defaultOption = getCeramicCapacityOptions()[0];
+        return `<input type="hidden" name="capacite" id="ceramic-capacity-select" value="${defaultOption.value}" data-price="${defaultOption.price}" />`;
       }
 
       const labels = productData.category === 'chaises' || productData.category === 'fauteuils' || productData.category === 'bancs'
@@ -1350,6 +1659,49 @@
       return labels.map(label => `
         <input class="form-field" type="text" name="${slugifyLabel(label)}" placeholder="${label} en cm" />
       `).join('');
+    }
+
+    function getCeramicCapacityOptions() {
+      return [
+        {people: '6 personnes', price: 14500},
+        {people: '8 personnes', price: 16000},
+        {people: '10 personnes', price: 20000},
+        {people: '12 personnes', price: 23000}
+      ].map(option => ({
+        ...option,
+        value: `${option.people} - ${option.price} dh`
+      }));
+    }
+
+    function renderCeramicSizingPanel(productData) {
+      if (productData.category !== 'hardstone-ceramiques') return '';
+
+      const options = getCeramicCapacityOptions();
+      return `
+        <div class="ceramic-sizing-panel" aria-label="Choisir le nombre de personnes et le prix">
+          <div class="ceramic-sizing-title">
+            <strong>Personnes</strong>
+            <span>Choisissez la capacite et le prix avant l'envoi.</span>
+          </div>
+          <div class="ceramic-size-grid">
+            ${options.map((option, index) => `
+              <label class="ceramic-size-option">
+                <input
+                  type="radio"
+                  name="ceramic_capacity_choice"
+                  value="${option.value}"
+                  data-price="${option.price}"
+                  ${index === 0 ? 'checked' : ''}
+                />
+                <span class="ceramic-size-card">
+                  <strong>${option.people}</strong>
+                  <b>${option.price} dh</b>
+                </span>
+              </label>
+            `).join('')}
+          </div>
+        </div>
+      `;
     }
 
     function getMeasurementLines(productData) {
@@ -1469,7 +1821,19 @@
 
       const measurementKeys = ['longueur', 'largeur', 'hauteur', 'hauteur_d_assise', 'profondeur', 'diametre', 'capacite'];
 
+      function syncCeramicCapacityChoice() {
+        if (productData.category !== 'hardstone-ceramiques') return;
+
+        const selectedCapacity = page.querySelector('input[name="ceramic_capacity_choice"]:checked');
+        const hiddenCapacity = document.getElementById('ceramic-capacity-select');
+        if (!selectedCapacity || !hiddenCapacity) return;
+
+        hiddenCapacity.value = selectedCapacity.value;
+        hiddenCapacity.dataset.price = selectedCapacity.dataset.price || '';
+      }
+
       function collectState() {
+        syncCeramicCapacityChoice();
         const data = new FormData(form);
         const fallbackFinish = finishes.find(item => item.id === productData.finishId)?.label || productData.colorLabel;
         const finishLabel = String(data.get('finish') || fallbackFinish || '').trim();
@@ -1574,6 +1938,9 @@
 
       form.addEventListener('input', syncWhatsappPreview);
       form.addEventListener('change', syncWhatsappPreview);
+      page.querySelectorAll('input[name="ceramic_capacity_choice"]').forEach(input => {
+        input.addEventListener('change', syncWhatsappPreview);
+      });
 
       whatsappLink.addEventListener('click', event => {
         syncWhatsappPreview();
@@ -1591,9 +1958,9 @@
         
         let dynamicPrice = productData.pricing?.value || 'Sur devis';
         if (productData.category === 'hardstone-ceramiques') {
-          const capaciteSelect = document.getElementById('ceramic-capacity-select');
-          if (capaciteSelect && capaciteSelect.selectedIndex > 0) {
-            dynamicPrice = capaciteSelect.options[capaciteSelect.selectedIndex].dataset.price || dynamicPrice;
+          const capacityInput = document.getElementById('ceramic-capacity-select');
+          if (capacityInput?.dataset.price) {
+            dynamicPrice = capacityInput.dataset.price;
           }
         }
 
