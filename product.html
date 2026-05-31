@@ -1457,7 +1457,7 @@
         if (!photos.some(photo => decodeURIComponent(photo.src || '').toLowerCase().endsWith('/table a manger hardstone celia video.mp4'))) {
           photos.push({
             src: celiaHardstoneVideo,
-            alt: 'Table a manger hardstone celia video'
+          alt: 'Table à manger hardstone Celia vidéo'
           });
         }
 
@@ -1544,8 +1544,8 @@
 
       if (category === 'tables-repas') {
         return {
-          label: 'Tables a manger',
-          categoryLabel: 'Tables a manger'
+          label: 'Tables à manger',
+          categoryLabel: 'Tables à manger'
         };
       }
 
@@ -1576,7 +1576,7 @@
       ].join(' '));
 
       if (source.includes('maria table a manger') || source.includes('maria table manger')) {
-        return setCatalogProductCategory({...productData, title: 'Maria table a manger'}, 'tables-repas');
+        return setCatalogProductCategory({...productData, title: 'Maria table à manger'}, 'tables-repas');
       }
 
       if (
@@ -1695,7 +1695,7 @@
 
     function sanitizeCatalogProduct(productData) {
       const description = String(productData.description || '').trim();
-      const cleanChairDescription = `${productData.title} est une assise selectionnee pour accompagner une table sur mesure Empire Stone. Son style reste sobre, confortable et facile a coordonner avec une salle a manger en marbre, travertin ou ceramique.`;
+        const cleanChairDescription = `${productData.title} est une assise sélectionnée pour accompagner une table sur mesure Empire Stone. Son style reste sobre, confortable et facile à coordonner avec une salle à manger en marbre, travertin ou céramique.`;
       const isHardstoneCeramic = productData.category === 'hardstone-ceramiques' || productData.category === 'tables-ceramiques';
       const organizedProduct = organizeCatalogProduct(productData, isHardstoneCeramic);
       const category = isHardstoneCeramic ? 'hardstone-ceramiques' : organizedProduct.category;
@@ -1708,12 +1708,12 @@
 
       if (organizedProduct.title) {
         organizedProduct.title = organizedProduct.title.replace(/\btables?\s+de\s+repas\b/gi, match =>
-          match.toLowerCase().startsWith('tables') ? 'Tables a manger' : 'Table a manger'
+          match.toLowerCase().startsWith('tables') ? 'Tables à manger' : 'Table à manger'
         ).replace(/\btables?\s+repas\b/gi, match =>
-          match.toLowerCase().startsWith('tables') ? 'Tables a manger' : 'Table a manger'
+          match.toLowerCase().startsWith('tables') ? 'Tables à manger' : 'Table à manger'
         ).replace(/\bsidi\s+ghanem\b/gi, '').replace(/\s{2,}/g, ' ').trim();
         if (normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('table manger blanc ibiza 4 personnes')) {
-          organizedProduct.title = 'Maria table a manger';
+          organizedProduct.title = 'Maria table à manger';
         }
         if (
           normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('table de repas en traveertin') ||
@@ -1724,20 +1724,20 @@
         if (normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('saro')) {
           organizedProduct.title = 'Table de repas saro';
           organizedProduct.category = 'tables-repas';
-          organizedProduct.label = 'Tables a manger';
-          organizedProduct.categoryLabel = 'Tables a manger';
+          organizedProduct.label = 'Tables à manger';
+          organizedProduct.categoryLabel = 'Tables à manger';
         }
         if (normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('kana')) {
           organizedProduct.title = 'Table de repas kana';
           organizedProduct.category = 'tables-repas';
-          organizedProduct.label = 'Tables a manger';
-          organizedProduct.categoryLabel = 'Tables a manger';
+          organizedProduct.label = 'Tables à manger';
+          organizedProduct.categoryLabel = 'Tables à manger';
         }
       }
 
       const cleanDescriptionText = description
-        .replace(/\bTable de repas\b/g, 'Table a manger')
-        .replace(/\btable de repas\b/g, 'table a manger')
+        .replace(/\bTable de repas\b/g, 'Table à manger')
+        .replace(/\btable de repas\b/g, 'table à manger')
         .replace(/\bsidi\s+ghanem\b/gi, '')
         .replace(/\s{2,}/g, ' ')
         .trim();
@@ -1750,7 +1750,7 @@
         );
       const cleanMeasurements = Array.isArray(organizedProduct.measurements)
         ? organizedProduct.measurements.map(line => {
-            if (isBlancIbizaRoundDining && /^Capacite\s*:/i.test(line)) return 'Capacite : 4 personnes';
+            if (isBlancIbizaRoundDining && /^Capacit[ée]\s*:/i.test(line)) return 'Capacité : 4 personnes';
             if (category !== 'tables-repas' || !/^Largeur\s*:/i.test(line)) return line;
             return /leonie/i.test(organizedProduct.title || '') ? 'Largeur : 90 cm' : 'Largeur : au choix';
           })
@@ -1804,32 +1804,32 @@
       }
 
       if (category === 'tables-repas') {
-        return `${productData.title} est une table a manger sur mesure pensee pour une salle a manger elegante. Choisissez la finition, les dimensions et la capacite afin d'obtenir une piece bien proportionnee pour votre interieur.`;
+        return `${productData.title} est une table à manger sur mesure pensée pour une salle à manger élégante. Choisissez la finition, les dimensions et la capacité afin d'obtenir une pièce bien proportionnée pour votre intérieur.`;
       }
 
       if (category === 'hardstone-ceramiques') {
-        return `${productData.title} est une table hard stone sur commande, avec une finition effet pierre elegante, durable et facile a vivre au quotidien.`;
+        return `${productData.title} est une table hard stone sur commande, avec une finition effet pierre élégante, durable et facile à vivre au quotidien.`;
       }
 
       if (category === 'tables-basses') {
-        return buildCoffeeTableDescription(productData.title || 'Ce modele');
+        return buildCoffeeTableDescription(productData.title || 'Ce modèle');
       }
 
       if (category === 'tables-appoint') {
-        return `${productData.title} est une table d'appoint decorative et fonctionnelle, ideale pour completer un salon, une chambre ou un coin lecture sans alourdir l'espace.`;
+        return `${productData.title} est une table d'appoint décorative et fonctionnelle, idéale pour compléter un salon, une chambre ou un coin lecture sans alourdir l'espace.`;
       }
 
-      return cleanDescriptionText || `${productData.title} est un produit Empire Stone fabrique sur commande, avec une finition soignee et des dimensions adaptees a votre projet.`;
+      return cleanDescriptionText || `${productData.title} est un produit Empire Stone fabriqué sur commande, avec une finition soignée et des dimensions adaptées à votre projet.`;
     }
 
     function buildCoffeeTableDescription(title) {
       const intro = /duo/i.test(title)
-        ? 'Ce duo est pense comme une piece maitresse pour structurer le salon avec deux volumes complementaires.'
+        ? 'Ce duo est pensé comme une pièce maîtresse pour structurer le salon avec deux volumes complémentaires.'
         : /trio/i.test(title)
-          ? 'Ce trio est pense comme une piece maitresse pour composer un salon dynamique, raffine et pratique au quotidien.'
-          : 'Ce modele solo est pense comme une piece maitresse, elegante et facile a placer dans le salon.';
+          ? 'Ce trio est pensé comme une pièce maîtresse pour composer un salon dynamique, raffiné et pratique au quotidien.'
+          : 'Ce modèle solo est pensé comme une pièce maîtresse, élégante et facile à placer dans le salon.';
 
-      return `${title} est fabrique par Empire Stone sur commande. ${intro} Chez Empire Stone, nous ne nous contentons pas de fabriquer des meubles ; nous creons votre piece maitresse. Ce modele est entierement personnalisable pour s'adapter a votre vision : dimensions au choix, depuis une configuration standard jusqu'a des mesures specifiques pour un grand espace, avec des diametres adaptes selon vos besoins ; hauteurs a la carte, du jeu de niveaux classique 40-45 cm a vos propres hauteurs pour un rendu visuel unique ; marbre au choix, Taza Grey, Carrare, Noir Galaxy, Toundra ou autre pierre naturelle ; couleur du bois au choix pour accorder la base cannelee a votre mobilier ou a votre sol, en noyer, chene, teinte naturelle ou sombre. Chaque table est une piece d'artisanat ou chaque cannelure est travaillee avec precision pour offrir un jeu d'ombre et de lumiere, couronne par un plateau en marbre noble. Transformez votre salon avec une piece qui vous ressemble. Contactez-nous pour configurer votre modele personnalise.`;
+      return `${title} est fabriqué par Empire Stone sur commande. ${intro} Ce modèle est entièrement personnalisable pour s'adapter à votre vision : dimensions au choix, hauteurs à la carte, marbre sélectionné selon votre projet et finition bois coordonnée à votre mobilier ou à votre sol. Chaque table est une pièce d'artisanat travaillée avec précision, de la base cannelée au plateau en marbre noble, pour offrir un jeu d'ombre et de lumière élégant. Transformez votre salon avec une pièce qui vous ressemble. Contactez-nous pour configurer votre modèle personnalisé.`;
     }
 
     function getSpecialModelDescription(title) {
@@ -1848,7 +1848,7 @@
 
       if (!specialModels.some(model => source.includes(model))) return '';
 
-      return `${title} est une creation Empire Stone au dessin sculptural, pensee pour apporter une presence forte sans alourdir le salon. Les proportions, la pierre et les finitions sont ajustables sur commande afin d'obtenir une piece harmonieuse avec votre espace. Chaque detail est travaille avec soin, de la base au plateau, pour offrir un rendu premium, durable et facile a integrer dans un interieur contemporain.`;
+      return `${title} est une création Empire Stone au dessin sculptural, pensée pour apporter une présence forte sans alourdir le salon. Les proportions, la pierre et les finitions sont ajustables sur commande afin d'obtenir une pièce harmonieuse avec votre espace. Chaque détail est travaillé avec soin, de la base au plateau, pour offrir un rendu premium, durable et facile à intégrer dans un intérieur contemporain.`;
     }
 
     function resolveActiveFinishId(productData, finishes) {
@@ -2243,7 +2243,7 @@
       const coverMedia = galleryPhotos?.[0] || {src: productData.cover, alt: productData.coverAlt || productData.title};
       const technicalSheets = getTechnicalSheets(productData);
       const technicalSheetButton = technicalSheets.length
-        ? '<div class="technical-sheet-actions"><button class="btn btn-secondary" type="button" id="technical-sheet-toggle">Voir plus de modele</button></div>'
+        ? '<div class="technical-sheet-actions"><button class="btn btn-secondary" type="button" id="technical-sheet-toggle">Voir plus de modèles</button></div>'
         : '';
       const technicalSheetSection = technicalSheets.length
         ? `
@@ -2345,15 +2345,15 @@
 
               <div class="form-section">
                 <div class="form-section-title">
-                  <strong>Vos coordonnees</strong>
+                  <strong>Vos coordonnées</strong>
                   <span class="form-hint">Nous utilisons ces informations pour vous recontacter.</span>
                 </div>
                 <div class="form-grid">
                   <input class="form-field" type="text" name="client_name" placeholder="Nom complet" required />
-                  <input class="form-field" type="tel" name="client_phone" placeholder="Telephone" required />
+                  <input class="form-field" type="tel" name="client_phone" placeholder="Téléphone" required />
                   <input class="form-field" type="email" name="client_email" placeholder="Email" />
                   <input class="form-field" type="text" name="client_city" placeholder="Ville / Projet" />
-                  <textarea class="form-textarea" name="client_message" placeholder="Precisez vos besoins, quantite, delai ou toute information utile."></textarea>
+                  <textarea class="form-textarea" name="client_message" placeholder="Précisez vos besoins, quantité, délai ou toute information utile."></textarea>
                 </div>
               </div>
 
@@ -2429,7 +2429,7 @@
         <div class="ceramic-sizing-panel" aria-label="Choisir le nombre de personnes et le prix">
           <div class="ceramic-sizing-title">
             <strong>Personnes</strong>
-            <span>Choisissez la capacite et le prix avant l'envoi.</span>
+            <span>Choisissez la capacité et le prix avant l'envoi.</span>
           </div>
           <div class="ceramic-size-grid">
             ${options.map((option, index) => `
@@ -2534,7 +2534,7 @@
     function buildMeasurementHint(productData) {
       const measurementLines = getMeasurementLines(productData);
       return measurementLines.length
-        ? `Reference du modele : ${measurementLines.join(' | ')}.`
+        ? `Référence du modèle : ${measurementLines.join(' | ')}.`
         : 'Indiquez vos dimensions si elles sont deja connues.';
     }
 
@@ -2606,7 +2606,7 @@
       button.addEventListener('click', () => {
         const shouldShow = panel.hasAttribute('hidden');
         panel.toggleAttribute('hidden', !shouldShow);
-        button.textContent = shouldShow ? 'Masquer la fiche technique' : 'Voir plus de modele';
+        button.textContent = shouldShow ? 'Masquer la fiche technique' : 'Voir plus de modèles';
         if (shouldShow) {
           panel.scrollIntoView({behavior: 'smooth', block: 'start'});
         }
@@ -2665,7 +2665,7 @@
           '',
           'Selection actuelle :',
           `Categorie : ${productData.categoryLabel}.`,
-          measurementReference.length ? `Reference du modele : ${measurementReference.join(' | ')}.` : '',
+          measurementReference.length ? `Référence du modèle : ${measurementReference.join(' | ')}.` : '',
           `Couleur / finition choisie : ${state.finishLabel}.`,
           state.woodOption ? `Option table : ${state.woodOption}.` : '',
           state.measurementEntries.length
@@ -2674,12 +2674,12 @@
           state.clientCity ? `Ville / projet : ${state.clientCity}.` : '',
           state.clientMessage ? `Besoin complementaire : ${state.clientMessage}.` : '',
           '',
-          'Mes coordonnees :',
+          'Mes coordonnées :',
           state.clientName ? `Nom : ${state.clientName}` : '',
-          state.clientPhone ? `Telephone : ${state.clientPhone}` : '',
+          state.clientPhone ? `Téléphone : ${state.clientPhone}` : '',
           state.clientEmail ? `Email : ${state.clientEmail}` : '',
           '',
-          'Merci de me communiquer le prix, le delai de fabrication et la disponibilite.'
+          'Merci de me communiquer le prix, le délai de fabrication et la disponibilité.'
         ].filter(Boolean);
 
         return lines.join('\n');
@@ -2698,7 +2698,7 @@
             ? `Mesures : ${state.measurementEntries.join(' | ')}`
             : 'Mesures : sur commande',
           state.clientName ? `Nom : ${state.clientName}` : '',
-          state.clientPhone ? `Telephone : ${state.clientPhone}` : '',
+          state.clientPhone ? `Téléphone : ${state.clientPhone}` : '',
           state.clientCity ? `Ville / Projet : ${state.clientCity}` : '',
           '',
           'Texte WhatsApp :',
@@ -2827,7 +2827,7 @@
         diametre: 'Diametre',
         hauteur_d_assise: 'Hauteur d assise',
         profondeur: 'Profondeur',
-        capacite: 'Capacite'
+        capacite: 'Capacité'
       };
 
       return labels[key] || key;

@@ -710,9 +710,9 @@
       lines.push('');
     });
 
-    lines.push(allPriced ? `Total estime : ${total} dh` : 'Total : sur devis');
+    lines.push(allPriced ? `Total estimé : ${total} dh` : 'Total : sur devis');
     lines.push('');
-    lines.push('Merci de me confirmer la disponibilite, le delai et la livraison.');
+    lines.push('Merci de me confirmer la disponibilité, le délai et la livraison.');
     return lines.join('\n');
   }
 
