@@ -1719,16 +1719,16 @@
           normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('table de repas en traveertin') ||
           normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('table de repas en travertin')
         ) {
-          organizedProduct.title = 'Table manger kamilia';
+          organizedProduct.title = 'Table à manger Kamilia';
         }
         if (normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('saro')) {
-          organizedProduct.title = 'Table de repas saro';
+          organizedProduct.title = 'Table à manger Saro';
           organizedProduct.category = 'tables-repas';
           organizedProduct.label = 'Tables à manger';
           organizedProduct.categoryLabel = 'Tables à manger';
         }
         if (normalizeCatalogSignature(`${organizedProduct.title} ${organizedProduct.slug || ''} ${organizedProduct.cover || ''} ${(organizedProduct.photos || []).map(photo => photo.src).join(' ')}`).includes('kana')) {
-          organizedProduct.title = 'Table de repas kana';
+          organizedProduct.title = 'Table à manger Kana';
           organizedProduct.category = 'tables-repas';
           organizedProduct.label = 'Tables à manger';
           organizedProduct.categoryLabel = 'Tables à manger';
@@ -1829,7 +1829,7 @@
           ? 'Ce trio est pensé comme une pièce maîtresse pour composer un salon dynamique, raffiné et pratique au quotidien.'
           : 'Ce modèle solo est pensé comme une pièce maîtresse, élégante et facile à placer dans le salon.';
 
-      return `${title} est fabriqué par Empire Stone sur commande. ${intro} Ce modèle est entièrement personnalisable pour s'adapter à votre vision : dimensions au choix, hauteurs à la carte, marbre sélectionné selon votre projet et finition bois coordonnée à votre mobilier ou à votre sol. Chaque table est une pièce d'artisanat travaillée avec précision, de la base cannelée au plateau en marbre noble, pour offrir un jeu d'ombre et de lumière élégant. Transformez votre salon avec une pièce qui vous ressemble. Contactez-nous pour configurer votre modèle personnalisé.`;
+      return `${title} est fabriqué par Empire Stone sur commande. ${intro} Ce modèle est personnalisable pour s'adapter à votre intérieur : dimensions au choix, hauteurs ajustées, marbre sélectionné selon votre projet et finition bois coordonnée à votre mobilier ou à votre sol. Chaque table est travaillée avec précision, de la base cannelée au plateau en marbre noble, pour offrir un jeu d'ombre et de lumière élégant. Contactez-nous pour configurer une pièce qui vous ressemble.`;
     }
 
     function getSpecialModelDescription(title) {
@@ -1843,12 +1843,13 @@
         'table basse yara',
         'table basse zana travertin',
         'colones travertin zarok',
+        'colonnes travertin zarok',
         'colonne travertin zinaya'
       ];
 
       if (!specialModels.some(model => source.includes(model))) return '';
 
-      return `${title} est une création Empire Stone au dessin sculptural, pensée pour apporter une présence forte sans alourdir le salon. Les proportions, la pierre et les finitions sont ajustables sur commande afin d'obtenir une pièce harmonieuse avec votre espace. Chaque détail est travaillé avec soin, de la base au plateau, pour offrir un rendu premium, durable et facile à intégrer dans un intérieur contemporain.`;
+      return `${title} est une création Empire Stone au dessin sculptural, pensée pour apporter une présence forte sans alourdir le salon. Les proportions, la pierre et les finitions sont ajustables sur commande afin d'obtenir une pièce harmonieuse avec votre espace. Chaque détail est travaillé avec soin, de la base au plateau, pour offrir un rendu haut de gamme, durable et facile à intégrer dans un intérieur contemporain.`;
     }
 
     function resolveActiveFinishId(productData, finishes) {
@@ -2296,7 +2297,7 @@
           <div class="info-panel">
             <span class="product-tag">${productData.categoryLabel}</span>
             <h1>${productData.title}</h1>
-            <p class="lead">${productData.description || 'Choisissez la couleur souhaitee, indiquez vos dimensions sur commande et envoyez votre demande pour ce produit.'}</p>
+            <p class="lead">${productData.description || 'Choisissez la couleur souhaitée, indiquez vos dimensions sur commande et envoyez votre demande pour ce produit.'}</p>
             ${ceramicSizingPanel}
             ${woodOptionPanel}
 
@@ -2321,7 +2322,7 @@
               <div class="form-section">
                 <div class="form-section-title">
                   <strong>Formulaire produit</strong>
-                  <span class="form-hint">Chaque demande est traitee sur commande.</span>
+                  <span class="form-hint">Chaque demande est traitée sur commande.</span>
                 </div>
                 <div class="form-grid">
                   <input class="form-field is-readonly" type="text" name="product_name" value="${productData.title}" readonly />
@@ -2332,7 +2333,7 @@
               <div class="form-section">
                 <div class="form-section-title">
                   <strong>Choisir la couleur</strong>
-                  <span class="form-hint">Selectionnez la finition souhaitee pour ce produit.</span>
+                  <span class="form-hint">Sélectionnez la finition souhaitée pour ce produit.</span>
                 </div>
                 <div class="color-grid">${finishCards}</div>
                 <div class="selection-note" id="selected-finish-note">
@@ -2399,9 +2400,9 @@
       }
 
       const labels = productData.category === 'chaises' || productData.category === 'fauteuils' || productData.category === 'bancs'
-        ? ['Hauteur d assise', 'Largeur', 'Profondeur']
+        ? ["Hauteur d'assise", 'Largeur', 'Profondeur']
         : hasRoundReference(productData)
-          ? ['Diametre', 'Hauteur']
+          ? ['Diamètre', 'Hauteur']
           : ['Longueur', 'Largeur', 'Hauteur'];
 
       return labels.map(label => `
@@ -2464,7 +2465,7 @@
         <div class="ceramic-sizing-panel" aria-label="Choisir avec bois ou sans bois">
           <div class="ceramic-sizing-title">
             <strong>Option table</strong>
-            <span>Choisissez la version souhaitee avant l'envoi.</span>
+            <span>Choisissez la version souhaitée avant l'envoi.</span>
           </div>
           <div class="ceramic-size-grid">
             ${options.map((option, index) => `
@@ -2535,15 +2536,17 @@
       const measurementLines = getMeasurementLines(productData);
       return measurementLines.length
         ? `Référence du modèle : ${measurementLines.join(' | ')}.`
-        : 'Indiquez vos dimensions si elles sont deja connues.';
+        : 'Indiquez vos dimensions si elles sont déjà connues.';
     }
 
     function hasRoundReference(productData) {
-      return getMeasurementLines(productData).some(line => /^diametre\s*:/i.test(String(line || '').trim()));
+      return getMeasurementLines(productData).some(line => /^diam[èe]tre\s*:/i.test(String(line || '').trim()));
     }
 
     function slugifyLabel(text) {
       return text
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '_')
         .replace(/^_+|_+$/g, '');
@@ -2551,7 +2554,7 @@
 
     function renderColorOption(finish, activeFinishId, index) {
       const isCurrent = finish.id === activeFinishId;
-      const badge = isCurrent ? 'Selectionnee' : 'Disponible';
+      const badge = isCurrent ? 'Sélectionnée' : 'Disponible';
       const media = finish.image
         ? `<img src="${finish.image}" alt="${finish.label}" loading="lazy" />`
         : '<div class="finish-placeholder" aria-hidden="true"></div>';
@@ -2663,16 +2666,16 @@
           '',
           `Je souhaite recevoir un devis pour le produit "${productData.title}".`,
           '',
-          'Selection actuelle :',
-          `Categorie : ${productData.categoryLabel}.`,
+          'Sélection actuelle :',
+          `Catégorie : ${productData.categoryLabel}.`,
           measurementReference.length ? `Référence du modèle : ${measurementReference.join(' | ')}.` : '',
           `Couleur / finition choisie : ${state.finishLabel}.`,
           state.woodOption ? `Option table : ${state.woodOption}.` : '',
           state.measurementEntries.length
-            ? `Mesures demandees : ${state.measurementEntries.join(', ')}.`
-            : 'Mesures : sur commande, a definir avec vous.',
+            ? `Mesures demandées : ${state.measurementEntries.join(', ')}.`
+            : 'Mesures : sur commande, à définir avec vous.',
           state.clientCity ? `Ville / projet : ${state.clientCity}.` : '',
-          state.clientMessage ? `Besoin complementaire : ${state.clientMessage}.` : '',
+          state.clientMessage ? `Besoin complémentaire : ${state.clientMessage}.` : '',
           '',
           'Mes coordonnées :',
           state.clientName ? `Nom : ${state.clientName}` : '',
@@ -2688,10 +2691,10 @@
       function renderSummary(state, message) {
         const measurementReference = getMeasurementLines(productData);
         const summaryLines = [
-          'Demande prete pour WhatsApp.',
+          'Demande prête pour WhatsApp.',
           '',
           `Produit : ${productData.title}`,
-          measurementReference.length ? `Reference : ${measurementReference.join(' | ')}` : '',
+          measurementReference.length ? `Référence : ${measurementReference.join(' | ')}` : '',
           `Couleur : ${state.finishLabel}`,
           state.woodOption ? `Option table : ${state.woodOption}` : '',
           state.measurementEntries.length
@@ -2732,7 +2735,7 @@
           }
 
           if (badge) {
-            badge.textContent = isChecked ? 'Selectionnee' : 'Disponible';
+            badge.textContent = isChecked ? 'Sélectionnée' : 'Disponible';
           }
         });
 
@@ -2824,8 +2827,8 @@
         longueur: 'Longueur',
         largeur: 'Largeur',
         hauteur: 'Hauteur',
-        diametre: 'Diametre',
-        hauteur_d_assise: 'Hauteur d assise',
+        diametre: 'Diamètre',
+        hauteur_d_assise: "Hauteur d'assise",
         profondeur: 'Profondeur',
         capacite: 'Capacité'
       };
